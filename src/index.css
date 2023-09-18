@@ -8,3 +8,14 @@ html,
 body {
   font-size: 16px;
 }
+img {
+  object-fit: cover;
+}
+:root {
+  --white: white;
+  --black: #1e2226;
+  --black-transparent: #1e22265e;
+  --light-blue: #749bc2;
+  --light-blue-transparent: #ccd6dd;
+  --blue: #749bc2;
+}
