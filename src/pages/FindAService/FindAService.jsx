@@ -27,23 +27,23 @@ const FindAService = () => {
         <section className={styles.services}>
           <div className={styles.servicesBtn} onClick={next}>
             <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
-            <Text>Jardineria</Text>
+            <Text>Jardinería</Text>
           </div>
           <div className={styles.servicesBtn} onClick={next}>
             <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
-            <Text>Jardineria</Text>
+            <Text>Tutoría</Text>
           </div>
           <div className={styles.servicesBtn} onClick={next}>
             <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
-            <Text>Jardineria</Text>
+            <Text>Eléctrico</Text>
           </div>
           <div className={styles.servicesBtn} onClick={next}>
             <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
-            <Text>Jardineria</Text>
+            <Text>Limpieza</Text>
           </div>
           <div className={styles.servicesBtn} onClick={next}>
             <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
-            <Text>Jardineria</Text>
+            <Text>Pasear Perro</Text>
           </div>
         </section>
       </div>
