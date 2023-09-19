@@ -1,0 +1,14 @@
+.input {
+  border: 1px solid var(--light-gray);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--light-gray);
+}
