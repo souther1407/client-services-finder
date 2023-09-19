@@ -16,6 +16,7 @@ img {
   --black: #1e2226;
   --black-transparent: #1e22265e;
   --light-blue: #749bc2;
+  --light-gray: rgb(159, 159, 159);
   --light-blue-transparent: #ccd6dd;
-  --blue: #749bc2;
+  --blue: #4682a9;
 }

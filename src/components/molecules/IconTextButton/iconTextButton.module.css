@@ -1,0 +1,26 @@
+.iconTextButton {
+  display: flex;
+  outline: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background 0.2s ease-in;
+  justify-content: center;
+}
+
+.iconTextButton.full {
+  background-color: var(--light-blue);
+  color: var(--white);
+}
+.iconTextButton.full:hover,
+.iconTextButton.bordered:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+.iconTextButton.bordered {
+  border: 1px solid var(--light-blue);
+
+  color: var(--light-blue);
+}

@@ -7,9 +7,39 @@
 }
 
 .section {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+.section.show {
+  display: flex;
+}
+
+.section.bordered {
+  border: 1px solid var(--light-gray);
+  border-radius: 8px;
+}
+.section.bordered > *:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.section.bordered .header {
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.section.bordered .header > :first-child {
+  margin-bottom: 8px;
+}
+
+.section.section.bordered .footer {
+  border-top: 1px solid var(--light-gray);
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 .section .services {
   display: flex;
