@@ -44,35 +44,55 @@ const FindAService = () => {
             className={styles.servicesBtn}
             onClick={() => handleSetServiceType("Jardinería")}
           >
-            <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
+            <Icon
+              type={"jardineriaIcono"}
+              color={"var(--light-blue)"}
+              size={"3rem"}
+            />
             <Text>Jardinería</Text>
           </div>
           <div
             className={styles.servicesBtn}
             onClick={() => handleSetServiceType("Tutoría")}
           >
-            <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
+            <Icon
+              type={"tutoriaIcono"}
+              color={"var(--light-blue)"}
+              size={"3rem"}
+            />
             <Text>Tutoría</Text>
           </div>
           <div
             className={styles.servicesBtn}
             onClick={() => handleSetServiceType("Eléctrico")}
           >
-            <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
+            <Icon
+              type={"electricistaIcono"}
+              color={"var(--light-blue)"}
+              size={"3rem"}
+            />
             <Text>Eléctrico</Text>
           </div>
           <div
             className={styles.servicesBtn}
             onClick={() => handleSetServiceType("Limpieza")}
           >
-            <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
+            <Icon
+              type={"limpiezaIcono"}
+              color={"var(--light-blue)"}
+              size={"3rem"}
+            />
             <Text>Limpieza</Text>
           </div>
           <div
             className={styles.servicesBtn}
             onClick={() => handleSetServiceType("Pasear Perro")}
           >
-            <Icon type={"budget"} color={"var(--light-blue)"} size={"3rem"} />
+            <Icon
+              type={"paseadorIcono"}
+              color={"var(--light-blue)"}
+              size={"3rem"}
+            />
             <Text>Pasear Perro</Text>
           </div>
         </section>
