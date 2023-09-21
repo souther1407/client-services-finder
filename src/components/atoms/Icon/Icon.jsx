@@ -60,7 +60,12 @@ import {
 import { CgArrowsV } from "react-icons/cg";
 import { FiClock } from "react-icons/fi";
 import styles from "./icon.module.css";
-import electricistaIcono from "../../../assets/icono electricista.svg";
+import electricistaIcono from "../../../assets/electricistaIcono.svg";
+import jardineriaIcono from "../../../assets/jardineriaIcono.svg";
+import limpiezaIcono from "../../../assets/limpiezaIcono.svg";
+import paseadorIcono from "../../../assets/paseadorIcono.svg";
+import tutoriaIcono from "../../../assets/tutoriaIcono.svg";
+
 const Icon = ({ type, size, color = "inherit" }) => {
   const props = {
     size: size || "100%",
@@ -118,7 +123,34 @@ const Icon = ({ type, size, color = "inherit" }) => {
     linkedin: <AiFillLinkedin {...props} />,
     clip: <AiOutlinePaperClip {...props} />,
     electricistaIcono: (
-      <img src={electricistaIcono} style={{ width: size, height: size }} />
+      <img
+        src={electricistaIcono}
+        style={{ width: size, height: size, transform: "scale(2.5)" }}
+      />
+    ),
+    jardineriaIcono: (
+      <img
+        src={jardineriaIcono}
+        style={{ width: size, height: size, transform: "scale(2.5)" }}
+      />
+    ),
+    limpiezaIcono: (
+      <img
+        src={limpiezaIcono}
+        style={{ width: size, height: size, transform: "scale(2.5)" }}
+      />
+    ),
+    paseadorIcono: (
+      <img
+        src={paseadorIcono}
+        style={{ width: size, height: size, transform: "scale(2.5)" }}
+      />
+    ),
+    tutoriaIcono: (
+      <img
+        src={tutoriaIcono}
+        style={{ width: size, height: size, transform: "scale(2.5)" }}
+      />
     ),
   };
   return <i>{icons[type]}</i>;
