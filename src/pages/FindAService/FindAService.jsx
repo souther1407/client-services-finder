@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Text from "../../components/atoms/Text/Text";
 import Icon from "../../components/atoms/Icon/Icon";
 import styles from "./findAService.module.css";
+import IconButton from "../../components/molecules/IconButton/IconButton";
 import IconTextButton from "../../components/molecules/IconTextButton/IconTextButton";
 import Input from "../../components/atoms/Input/Input";
 import Textarea from "../../components/atoms/Textarea/Textarea";
+import Select from "../../components/atoms/Select/Select";
 const FindAService = () => {
   const max = 6;
   const [currentSection, setCurrentSection] = useState(0);
@@ -32,8 +34,31 @@ const FindAService = () => {
   };
   const handleChangeInput = (id, value) =>
     setInput((prev) => ({ ...prev, [id]: value }));
+
+  const resetForm = () => {
+    setInput({
+      description: "",
+      email: "",
+      firstName: "",
+      lastName: "",
+      location: "",
+      phone: "",
+      serviceType: "",
+    });
+    setCurrentSection(0);
+  };
   return (
     <div className={styles.findAService}>
+      <nav className={styles.nav}>
+        {currentSection !== 0 && (
+          <IconButton
+            icon={"singleArrowLeft"}
+            size={"3rem"}
+            color={"var(--blue)"}
+            onClick={resetForm}
+          />
+        )}
+      </nav>
       <div
         className={`${styles.section} ${currentSection === 0 && styles.show}`}
       >
@@ -106,12 +131,25 @@ const FindAService = () => {
           <Text type="title" bold>
             Ingresa tu ubicación
           </Text>
-          <Input
+          {/* <Input
             id={"location"}
             onChange={handleChangeInput}
             placeholder={"Ejemplo: La molina, Lima"}
             size="600px"
             value={input.location}
+          /> */}
+          <Select
+            elements={[
+              "La Molina",
+              "Surco",
+              "Miraflores",
+              "San Isidro",
+              "San Borja",
+            ]}
+            id={"location"}
+            value={input.location}
+            onChange={handleChangeInput}
+            title={"Ingresa tu distrito"}
           />
         </div>
         <div className={styles.footer}>
@@ -139,7 +177,6 @@ const FindAService = () => {
             placeholder={
               "Ejemplo: Pasear a mi perro de Lunes a viernes. Horario: 6pm-7pm"
             }
-            size="600px"
             value={input.description}
           />
         </div>
@@ -174,7 +211,6 @@ const FindAService = () => {
             <label className={styles.label}>Nombre</label>
             <Input
               id="firstName"
-              size="600px"
               onChange={handleChangeInput}
               value={input.firstName}
             />
@@ -183,7 +219,6 @@ const FindAService = () => {
             <label className={styles.label}>Apellido</label>
             <Input
               id="lastName"
-              size="600px"
               onChange={handleChangeInput}
               value={input.lastName}
             />
@@ -223,7 +258,6 @@ const FindAService = () => {
             <label className={styles.label}>Número de teléfono (+51)</label>
             <Input
               id="phone"
-              size="600px"
               onChange={handleChangeInput}
               value={input.phone}
             />
@@ -232,7 +266,6 @@ const FindAService = () => {
             <label className={styles.label}>Email</label>
             <Input
               id="email"
-              size="600px"
               onChange={handleChangeInput}
               value={input.email}
             />
