@@ -8,6 +8,7 @@ import Input from "../../components/atoms/Input/Input";
 import Textarea from "../../components/atoms/Textarea/Textarea";
 import Select from "../../components/atoms/Select/Select";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
+import { getByLocationAndType } from "../../services/professionalsApi";
 const FindAService = () => {
   const max = 6;
   const [currentSection, setCurrentSection] = useState(0);
@@ -20,6 +21,8 @@ const FindAService = () => {
     phone: "",
     email: "",
   });
+  const [professionals, setProfessionals] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const next = () => {
     if (currentSection === max - 1) return;
@@ -48,8 +51,25 @@ const FindAService = () => {
     });
     setCurrentSection(0);
   };
+
+  const handleFindProfessionals = async () => {
+    try {
+      setLoading(true);
+      const professionals = await getByLocationAndType(
+        input.location,
+        input.serviceType
+      );
+      setProfessionals(professionals);
+      next();
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className={styles.findAService}>
+      {loading && <LoadingScreen />}
       <nav className={styles.nav}>
         {currentSection !== 0 && (
           <IconButton
@@ -237,7 +257,7 @@ const FindAService = () => {
           <IconTextButton
             textProps={{ type: "subtitle", bold: true }}
             size="240px"
-            onClick={next}
+            onClick={handleFindProfessionals}
           >
             Siguiente
           </IconTextButton>
@@ -250,69 +270,82 @@ const FindAService = () => {
       >
         <div className={styles.header}>
           <Text type="title" bold>
-            ¡Encontramos profesionales en tu área!
+            {professionals.length > 0
+              ? "¡Encontramos profesionales en tu área!"
+              : "no encontramos profesionales en tu area, prueba con otra o vuelve mas tarde"}
           </Text>
           <Text style={{ marginBottom: "16px" }} type="subtitle" bold>
             Proyecto: {input.serviceType}
           </Text>
-          <div className={styles.inputLabel}>
-            <label className={styles.label}>Número de teléfono (+51)</label>
-            <Input
-              id="phone"
-              onChange={handleChangeInput}
-              value={input.phone}
-            />
-          </div>
-          <div className={styles.inputLabel}>
-            <label className={styles.label}>Email</label>
-            <Input
-              id="email"
-              onChange={handleChangeInput}
-              value={input.email}
-            />
-          </div>
+          {professionals.length > 0 && (
+            <>
+              <div className={styles.inputLabel}>
+                <label className={styles.label}>Número de teléfono (+51)</label>
+                <Input
+                  id="phone"
+                  onChange={handleChangeInput}
+                  value={input.phone}
+                />
+              </div>
+              <div className={styles.inputLabel}>
+                <label className={styles.label}>Email</label>
+                <Input
+                  id="email"
+                  onChange={handleChangeInput}
+                  value={input.email}
+                />
+              </div>
+            </>
+          )}
         </div>
-        <div className={`${styles.footer} ${styles.btns}`}>
-          <IconTextButton
-            variant="bordered"
-            textProps={{ type: "subtitle", bold: true }}
-            size="240px"
-            onClick={ant}
-          >
-            Anterior
-          </IconTextButton>
-          <IconTextButton
-            textProps={{ type: "subtitle", bold: true }}
-            size="240px"
-            onClick={next}
-          >
-            Ver profesionales
-          </IconTextButton>
-        </div>
+        {professionals.length > 0 && (
+          <div className={`${styles.footer} ${styles.btns}`}>
+            <IconTextButton
+              variant="bordered"
+              textProps={{ type: "subtitle", bold: true }}
+              size="240px"
+              onClick={ant}
+            >
+              Anterior
+            </IconTextButton>
+            <IconTextButton
+              textProps={{ type: "subtitle", bold: true }}
+              size="240px"
+              onClick={next}
+            >
+              Ver profesionales
+            </IconTextButton>
+          </div>
+        )}
       </div>
       <div
         className={`${styles.section} ${currentSection === 5 && styles.show}`}
       >
-        <Text type="title">¡Encontramos a 20 profesionales en tu area!</Text>
+        {professionals.length > 0 ? (
+          <Text type="title">
+            ¡Encontramos a {professionals.length}{" "}
+            {professionals.length > 1 ? "profesionales" : "profesional"} en tu
+            area!
+          </Text>
+        ) : (
+          <Text type="title">
+            No encontramos a nadie :c, prueba con otra ubicación.
+          </Text>
+        )}
+
         <section className={styles.profesionals}>
-          <div className={styles.profesional}>
-            <Text bold>José Whittembury</Text>
-            <IconTextButton variant="bordered" size="240px" onClick={() => {}}>
-              Cotizar Precio
-            </IconTextButton>
-          </div>
-          <div className={styles.profesional}>
-            <Text bold>Luis Caceres</Text>
-            <IconTextButton variant="bordered" size="240px" onClick={() => {}}>
-              Cotizar Precio
-            </IconTextButton>
-          </div>
-          <div className={styles.profesional}>
-            <Text bold>Eric Casanova</Text>
-            <IconTextButton variant="bordered" size="240px" onClick={() => {}}>
-              Cotizar Precio
-            </IconTextButton>
-          </div>
+          {professionals.map((p) => (
+            <div className={styles.profesional}>
+              <Text bold>{p.name}</Text>
+              <IconTextButton
+                variant="bordered"
+                size="240px"
+                onClick={() => {}}
+              >
+                Cotizar Precio
+              </IconTextButton>
+            </div>
+          ))}
         </section>
       </div>
     </div>
