@@ -10,9 +10,10 @@ import MultiValueSelect from "../../components/molecules/MultiValueSelect/MultiV
 import { SERVICES } from "../../utils/constants/services";
 import { LOCATION } from "../../utils/constants/locations";
 import IconButton from "../../components/molecules/IconButton/IconButton";
-const MAX_REQUEST = 10;
+
 const DashboardAdmin = () => {
   const [requests, setRequests] = useState([]);
+  const MAX_REQUEST = 10;
   const [loading, setLoading] = useState(true);
   const [newProfessionalInput, setNewProfessionalInput] = useState({
     name: "",
@@ -44,6 +45,7 @@ const DashboardAdmin = () => {
     setLoading(true);
     getAll(MAX_REQUEST, paginator.page)
       .then((response) => {
+        console.log(response);
         setRequests(response.results);
         setPaginator({
           page: paginator.page,
