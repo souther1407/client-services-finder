@@ -28,8 +28,8 @@ const DashboardAdmin = () => {
     try {
       setLoading(true);
       await update(id, { checked: newValue });
-      setRequests([
-        ...requests.map((r) => (r.id === id ? { ...r, checked: newValue } : r)),
+      setRequests((prev) => [
+        ...prev.map((r) => (r.id === id ? { ...r, checked: newValue } : r)),
       ]);
     } catch (error) {
       alert(error.message);
@@ -135,7 +135,7 @@ const DashboardAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {requests.map((m) => (
+            {requests?.map((m) => (
               <tr
                 className={styles.request}
                 key={m.id}
