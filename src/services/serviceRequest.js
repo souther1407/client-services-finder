@@ -19,3 +19,14 @@ export const getAll = async (cant, page) => {
   if (response.status >= 400) throw new Error("Error: " + body);
   return body;
 };
+
+export const update = async (id, data) => {
+  const response = await fetch(`${URL}/serviceRequest/${id}`, {
+    method: "PUT",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const body = await response.json();
+  if (response.status >= 400) throw new Error("Error: " + body);
+  return body;
+};

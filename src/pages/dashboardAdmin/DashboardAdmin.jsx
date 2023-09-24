@@ -3,7 +3,7 @@ import styles from "./dashboardAdmin.module.css";
 import Input from "../../components/atoms/Input/Input";
 import Text from "../../components/atoms/Text/Text";
 import IconTextButton from "../../components/molecules/IconTextButton/IconTextButton";
-import { getAll } from "../../services/serviceRequest.js";
+import { getAll, update } from "../../services/serviceRequest.js";
 import { create } from "../../services/professionalsApi";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
 import MultiValueSelect from "../../components/molecules/MultiValueSelect/MultiValueSelect";
@@ -21,10 +21,18 @@ const DashboardAdmin = () => {
   });
   const [page, setPage] = useState(1);
 
-  const handleChangeChecked = (id, newValue) => {
-    setRequests([
-      ...requests.map((r) => (r.id === id ? { ...r, checked: newValue } : r)),
-    ]);
+  const handleChangeChecked = async (id, newValue) => {
+    try {
+      setLoading(true);
+      await update(id, { checked: newValue });
+      setRequests([
+        ...requests.map((r) => (r.id === id ? { ...r, checked: newValue } : r)),
+      ]);
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const [detailRequest, setDetailRequest] = useState(null);
@@ -53,6 +61,7 @@ const DashboardAdmin = () => {
       setLoading(false);
     }
   };
+
   return (
     <div className={styles.dashboardAdmin}>
       {loading && <LoadingScreen />}
