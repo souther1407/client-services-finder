@@ -3,7 +3,9 @@
   justify-content: space-around;
   padding: 16px;
 }
-
+.listResquests {
+  width: 450px;
+}
 .listResquests table {
   border-collapse: collapse;
   border: 1px solid var(--light-gray);

@@ -186,8 +186,8 @@ const DashboardAdmin = () => {
               Descripción del trabajo: {`${detailRequest.description}`}
             </Text>
             <Text>
-              Telefono del profesional requerido:{" "}
-              {detailRequest.professionalPhoneNumbers[0]}
+              Teléfono del profesional/es requerido/s:{" "}
+              {detailRequest.professionalPhoneNumbers.join(",")}
             </Text>
             <IconTextButton
               variant="bordered"
