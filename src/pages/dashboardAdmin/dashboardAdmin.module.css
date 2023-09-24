@@ -11,9 +11,18 @@
 .listResquests table thead {
   border-bottom: 1px solid var(--light-gray);
 }
+.listResquests table tbody {
+  border: 1px solid var(--light-gray);
+}
 .listResquests .request {
   cursor: pointer;
 }
 .listResquests table td {
   padding: 16px;
+}
+.listResquests table .tablePaginator {
+  padding: 16px;
+}
+.listResquests table .tablePaginator .paginatorBtns {
+  display: flex;
 }

@@ -9,6 +9,7 @@ import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScree
 import MultiValueSelect from "../../components/molecules/MultiValueSelect/MultiValueSelect";
 import { SERVICES } from "../../utils/constants/services";
 import { LOCATION } from "../../utils/constants/locations";
+import IconButton from "../../components/molecules/IconButton/IconButton";
 const MAX_REQUEST = 10;
 const DashboardAdmin = () => {
   const [requests, setRequests] = useState([]);
@@ -19,8 +20,10 @@ const DashboardAdmin = () => {
     locations: [],
     phone: "",
   });
-  const [page, setPage] = useState(1);
-
+  const [paginator, setPaginator] = useState({
+    page: 1,
+    totalRequests: 0,
+  });
   const handleChangeChecked = async (id, newValue) => {
     try {
       setLoading(true);
@@ -38,11 +41,18 @@ const DashboardAdmin = () => {
   const [detailRequest, setDetailRequest] = useState(null);
 
   useEffect(() => {
-    getAll(MAX_REQUEST, page)
-      .then((response) => setRequests(response.results))
+    setLoading(true);
+    getAll(MAX_REQUEST, paginator.page)
+      .then((response) => {
+        setRequests(response.results);
+        setPaginator({
+          page: paginator.page,
+          totalRequests: response.total,
+        });
+      })
       .catch((error) => alert(error.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [paginator.page]);
 
   const handleSelectRequest = (request) => {
     setDetailRequest(request);
@@ -60,6 +70,17 @@ const DashboardAdmin = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleNextPage = () => {
+    if (paginator.page === Math.ceil(paginator.totalRequests / MAX_REQUEST))
+      return;
+    setPaginator((prev) => ({ ...prev, page: prev.page + 1 }));
+  };
+
+  const handleAntPage = () => {
+    if (paginator.page === 1) return;
+    setPaginator((prev) => ({ ...prev, page: prev.page - 1 }));
   };
 
   return (
@@ -127,6 +148,30 @@ const DashboardAdmin = () => {
               </tr>
             ))}
           </tbody>
+          <tfoot className={styles.tablePaginator}>
+            <tr>
+              <td colSpan={"3"}>
+                <Text>
+                  Página {paginator.page} de{" "}
+                  {Math.ceil(paginator.totalRequests / MAX_REQUEST)}
+                </Text>
+              </td>
+              <td>
+                <div className={styles.paginatorBtns}>
+                  <IconButton
+                    size={"32px"}
+                    icon="singleArrowLeft"
+                    onClick={handleAntPage}
+                  />
+                  <IconButton
+                    size={"32px"}
+                    icon="singleArrowRight"
+                    onClick={handleNextPage}
+                  />
+                </div>
+              </td>
+            </tr>
+          </tfoot>
         </table>
         {detailRequest && (
           <div className={styles.requestDetail}>
