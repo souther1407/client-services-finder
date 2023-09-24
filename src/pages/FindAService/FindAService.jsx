@@ -9,6 +9,7 @@ import Textarea from "../../components/atoms/Textarea/Textarea";
 import Select from "../../components/atoms/Select/Select";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
 import { getByLocationAndType } from "../../services/professionalsApi";
+import { LOCATION } from "../../utils/constants/locations";
 const FindAService = () => {
   const max = 6;
   const [currentSection, setCurrentSection] = useState(0);
@@ -160,13 +161,7 @@ const FindAService = () => {
             value={input.location}
           /> */}
           <Select
-            elements={[
-              "La Molina",
-              "Surco",
-              "Miraflores",
-              "San Isidro",
-              "San Borja",
-            ]}
+            elements={LOCATION}
             id={"location"}
             value={input.location}
             onChange={handleChangeInput}

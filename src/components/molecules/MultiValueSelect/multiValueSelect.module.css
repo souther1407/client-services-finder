@@ -1,0 +1,8 @@
+.multiValueSelect {
+  display: flex;
+  flex-direction: column;
+}
+.value {
+  display: flex;
+  flex-wrap: wrap;
+}
