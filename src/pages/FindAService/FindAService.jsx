@@ -10,17 +10,18 @@ import Select from "../../components/atoms/Select/Select";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
 import { getByLocationAndType } from "../../services/professionalsApi";
 import { LOCATION } from "../../utils/constants/locations";
+import { create } from "../../services/serviceRequest.js";
 const FindAService = () => {
   const max = 6;
   const [currentSection, setCurrentSection] = useState(0);
   const [input, setInput] = useState({
-    serviceType: "",
+    type: "",
     location: "",
     description: "",
     firstName: "",
     lastName: "",
-    phone: "",
-    email: "",
+    contactPhone: "",
+    contactEmail: "",
   });
   const [professionals, setProfessionals] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,8 +34,8 @@ const FindAService = () => {
     if (currentSection === 0) return;
     setCurrentSection((prev) => prev - 1);
   };
-  const handleSetServiceType = (serviceType) => {
-    setInput((prev) => ({ ...prev, serviceType }));
+  const handleSetServiceType = (type) => {
+    setInput((prev) => ({ ...prev, type }));
     next();
   };
   const handleChangeInput = (id, value) =>
@@ -58,7 +59,7 @@ const FindAService = () => {
       setLoading(true);
       const professionals = await getByLocationAndType(
         input.location,
-        input.serviceType
+        input.type
       );
       setProfessionals(professionals);
       next();
@@ -67,6 +68,22 @@ const FindAService = () => {
     } finally {
       setLoading(false);
     }
+  };
+  const handleCotize = async (professionalPhoneNumbers) => {
+    try {
+      setLoading(true);
+      await create({ ...input, professionalPhoneNumbers });
+      alert("Listo!");
+      resetForm();
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleCotizeAll = async () => {
+    const phoneNumbers = professionals.map((p) => p.phone);
+    handleCotize(phoneNumbers);
   };
   return (
     <div className={styles.findAService}>
@@ -277,17 +294,17 @@ const FindAService = () => {
               <div className={styles.inputLabel}>
                 <label className={styles.label}>Número de teléfono (+51)</label>
                 <Input
-                  id="phone"
+                  id="contactPhone"
                   onChange={handleChangeInput}
-                  value={input.phone}
+                  value={input.contactPhone}
                 />
               </div>
               <div className={styles.inputLabel}>
                 <label className={styles.label}>Email</label>
                 <Input
-                  id="email"
+                  id="contactEmail"
                   onChange={handleChangeInput}
-                  value={input.email}
+                  value={input.contactEmail}
                 />
               </div>
             </>
@@ -335,12 +352,15 @@ const FindAService = () => {
               <IconTextButton
                 variant="bordered"
                 size="240px"
-                onClick={() => {}}
+                onClick={() => handleCotize([p.phone])}
               >
                 Cotizar Precio
               </IconTextButton>
             </div>
           ))}
+          <IconTextButton size="100%" onClick={handleCotizeAll}>
+            Cotizar todos
+          </IconTextButton>
         </section>
       </div>
     </div>

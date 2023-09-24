@@ -6,7 +6,10 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<FindAService />} />
-      <Route path="/admin" element={<DashboardAdmin />} />
+      <Route
+        path={`/${import.meta.env.VITE_ADMIN_URL}`}
+        element={<DashboardAdmin />}
+      />
     </Routes>
   );
 }
