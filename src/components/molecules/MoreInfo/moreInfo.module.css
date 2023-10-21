@@ -1,0 +1,24 @@
+.moreInfo {
+  width: fit-content;
+  position: relative;
+  cursor: pointer;
+}
+.content {
+  position: absolute;
+  display: none;
+  left: 100%;
+  top: 50%;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  background-color: var(--yellow-cream);
+  transform: translateY(-50%);
+  width: 300px;
+  max-height: 200px;
+  overflow: auto;
+  padding: 8px;
+}
+
+.moreInfo:hover .content {
+  display: flex;
+  flex-direction: column;
+}
