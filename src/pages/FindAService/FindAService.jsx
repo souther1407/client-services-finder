@@ -72,9 +72,7 @@ const FindAService = () => {
       const link = document.createElement("a");
       link.setAttribute(
         "href",
-        `whatsapp://send?phone=${professionalPhoneNumbers}&text=${encodeURIComponent(
-          "Hola en que puedo ayudarte?"
-        )}`
+        `whatsapp://send?phone=${professionalPhoneNumbers}`
       );
       link.setAttribute("target", "_blank");
       link.click();
