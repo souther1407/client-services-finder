@@ -3,11 +3,12 @@
   outline: none;
   border: 1px solid transparent;
   cursor: pointer;
-  padding: 16px;
+  padding: 12px;
   border-radius: 8px;
   background-color: transparent;
   transition: background 0.2s ease-in;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .iconTextButton.full {

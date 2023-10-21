@@ -97,6 +97,34 @@
   border-radius: 8px;
   transition: background 0.2s ease-in;
 }
+.professionalData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.professionalDetail {
+  display: flex;
+}
+.separator {
+  width: 1px;
+  height: 100%;
+  background-color: gray;
+  margin: 0 16px;
+}
+.ball {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--green);
+  box-shadow: 1px 1px 4px var(--light-green), -1px -1px 4px var(--light-green);
+}
+.professionalDetail .detailSection {
+  display: flex;
+  align-items: center;
+}
+.professionalDetail .detailSection > :first-child {
+  margin-right: 8px;
+}
 .servicesBtn:hover {
   background-color: var(--light-blue-transparent);
 }

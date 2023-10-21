@@ -1,6 +1,7 @@
 import React from "react";
 import Text from "../../atoms/Text/Text";
 import styles from "./iconTextButton.module.css";
+import Icon from "../../atoms/Icon/Icon";
 const IconTextButton = ({
   variant = "full",
   size = "auto",
@@ -16,6 +17,7 @@ const IconTextButton = ({
       onClick={onClick}
     >
       <Text {...textProps}>{children}</Text>
+      {iconProps?.type && <Icon {...iconProps} />}
     </button>
   );
 };

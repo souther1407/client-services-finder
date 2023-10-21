@@ -45,7 +45,9 @@ import {
   AiFillYoutube,
   AiFillFacebook,
   AiFillLinkedin,
+  AiOutlineWhatsApp,
   AiOutlinePaperClip,
+  AiFillHome,
 } from "react-icons/ai";
 import { GiGears, GiTakeMyMoney } from "react-icons/gi";
 import { TfiArrowsCorner } from "react-icons/tfi";
@@ -55,6 +57,7 @@ import {
   BsArrowRight,
   BsImage,
   BsFillCalculatorFill,
+  BsShieldFillCheck,
   BsFillTrashFill,
 } from "react-icons/bs";
 import { CgArrowsV } from "react-icons/cg";
@@ -85,6 +88,7 @@ const Icon = ({ type, size, color = "inherit" }) => {
     location: <ImLocation {...props} />,
     budget: <FaMoneyBillWave {...props} />,
     user: <FaUserCircle {...props} />,
+    checked: <BsShieldFillCheck {...props} />,
     case: <BsFillBriefcaseFill {...props} />,
     aiHead: <FaHeadSideVirus {...props} />,
     gears: <GiGears {...props} />,
@@ -93,17 +97,20 @@ const Icon = ({ type, size, color = "inherit" }) => {
     rightArrow: <BsArrowRight {...props} />,
     image: <BsImage {...props} />,
     downArrow: <FaLongArrowAltDown {...props} />,
+    home: <AiFillHome {...props} />,
     mail: <AiOutlineMail {...props} />,
     shield: <FaShieldAlt {...props} />,
     bars: <FaBars {...props} />,
     help: <BiHelpCircle {...props} />,
     close: <FaTimes {...props} />,
+    whatsapp: <AiOutlineWhatsApp {...props} />,
     bold: <FaBold {...props} />,
     underline: <FaUnderline {...props} />,
     italic: <FaItalic {...props} />,
     checkMark: <AiOutlineCheckCircle {...props} />,
     money: <GiTakeMyMoney {...props} />,
     megaphone: <BsFillMegaphoneFill {...props} />,
+
     team: <AiOutlineTeam {...props} />,
     book: <BiBookOpen {...props} />,
     search: <AiOutlineSearch {...props} />,

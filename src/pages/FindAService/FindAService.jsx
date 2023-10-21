@@ -17,11 +17,6 @@ const FindAService = () => {
   const [input, setInput] = useState({
     type: "",
     location: "",
-    description: "",
-    firstName: "",
-    lastName: "",
-    contactPhone: "",
-    contactEmail: "",
   });
   const [professionals, setProfessionals] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -71,14 +66,21 @@ const FindAService = () => {
   };
   const handleCotize = async (professionalPhoneNumbers) => {
     try {
-      setLoading(true);
-      await create({ ...input, professionalPhoneNumbers });
-      alert("Listo!");
-      resetForm();
+      /* setLoading(true); */
+      /* await create({ ...input, professionalPhoneNumbers }); */
+      const link = document.createElement("a");
+      link.setAttribute(
+        "href",
+        `whatsapp://send?phone=${professionalPhoneNumbers}&text=${encodeURIComponent(
+          "Hola en que puedo ayudarte?"
+        )}`
+      );
+      link.setAttribute("target", "_blank");
+      link.click();
     } catch (error) {
       alert(error.message);
     } finally {
-      setLoading(false);
+      /*  setLoading(false); */
     }
   };
   const handleCotizeAll = async () => {
@@ -91,9 +93,9 @@ const FindAService = () => {
       <nav className={styles.nav}>
         {currentSection !== 0 && (
           <IconButton
-            icon={"singleArrowLeft"}
-            size={"3rem"}
-            color={"var(--blue)"}
+            icon={"home"}
+            size={"2.5rem"}
+            color={"var(--primary)"}
             onClick={resetForm}
           />
         )}
@@ -170,13 +172,6 @@ const FindAService = () => {
           <Text type="title" bold>
             Ingresa tu ubicación
           </Text>
-          {/* <Input
-            id={"location"}
-            onChange={handleChangeInput}
-            placeholder={"Ejemplo: La molina, Lima"}
-            size="600px"
-            value={input.location}
-          /> */}
           <Select
             elements={LOCATION}
             id={"location"}
@@ -188,150 +183,16 @@ const FindAService = () => {
         <div className={styles.footer}>
           <IconTextButton
             textProps={{ type: "subtitle", bold: true }}
-            onClick={next}
-            size="240px"
-          >
-            Siguiente
-          </IconTextButton>
-        </div>
-      </div>
-      <div
-        className={`${styles.section} ${currentSection === 2 && styles.show} ${
-          styles.bordered
-        }`}
-      >
-        <div className={styles.header}>
-          <Text type="title" bold>
-            Descripción del trabajo
-          </Text>
-          <Textarea
-            id={"description"}
-            onChange={handleChangeInput}
-            placeholder={
-              "Ejemplo: Pasear a mi perro de Lunes a viernes. Horario: 6pm-7pm"
-            }
-            value={input.description}
-          />
-        </div>
-        <div className={`${styles.footer} ${styles.btns}`}>
-          <IconTextButton
-            variant="bordered"
-            textProps={{ type: "subtitle", bold: true }}
-            size="240px"
-            onClick={ant}
-          >
-            Anterior
-          </IconTextButton>
-          <IconTextButton
-            textProps={{ type: "subtitle", bold: true }}
-            size="240px"
-            onClick={next}
-          >
-            Siguiente
-          </IconTextButton>
-        </div>
-      </div>
-      <div
-        className={`${styles.section} ${currentSection === 3 && styles.show} ${
-          styles.bordered
-        }`}
-      >
-        <div className={styles.header}>
-          <Text type="title" bold>
-            ¿Cúal es tu nombre?
-          </Text>
-          <div className={styles.inputLabel}>
-            <label className={styles.label}>Nombre</label>
-            <Input
-              id="firstName"
-              onChange={handleChangeInput}
-              value={input.firstName}
-            />
-          </div>
-          <div className={styles.inputLabel}>
-            <label className={styles.label}>Apellido</label>
-            <Input
-              id="lastName"
-              onChange={handleChangeInput}
-              value={input.lastName}
-            />
-          </div>
-        </div>
-        <div className={`${styles.footer} ${styles.btns}`}>
-          <IconTextButton
-            variant="bordered"
-            textProps={{ type: "subtitle", bold: true }}
-            size="240px"
-            onClick={ant}
-          >
-            Anterior
-          </IconTextButton>
-          <IconTextButton
-            textProps={{ type: "subtitle", bold: true }}
-            size="240px"
             onClick={handleFindProfessionals}
+            size="240px"
           >
             Siguiente
           </IconTextButton>
         </div>
       </div>
+
       <div
-        className={`${styles.section} ${currentSection === 4 && styles.show} ${
-          styles.bordered
-        }`}
-      >
-        <div className={styles.header}>
-          <Text type="title" bold>
-            {professionals.length > 0
-              ? "¡Encontramos profesionales en tu área!"
-              : "no encontramos profesionales en tu area, prueba con otra o vuelve mas tarde"}
-          </Text>
-          <Text style={{ marginBottom: "16px" }} type="subtitle" bold>
-            Proyecto: {input.serviceType}
-          </Text>
-          {professionals.length > 0 && (
-            <>
-              <div className={styles.inputLabel}>
-                <label className={styles.label}>Número de teléfono (+51)</label>
-                <Input
-                  id="contactPhone"
-                  onChange={handleChangeInput}
-                  value={input.contactPhone}
-                />
-              </div>
-              <div className={styles.inputLabel}>
-                <label className={styles.label}>Email</label>
-                <Input
-                  id="contactEmail"
-                  onChange={handleChangeInput}
-                  value={input.contactEmail}
-                />
-              </div>
-            </>
-          )}
-        </div>
-        {professionals.length > 0 && (
-          <div className={`${styles.footer} ${styles.btns}`}>
-            <IconTextButton
-              variant="bordered"
-              textProps={{ type: "subtitle", bold: true }}
-              size="240px"
-              onClick={ant}
-            >
-              Anterior
-            </IconTextButton>
-            <IconTextButton
-              textProps={{ type: "subtitle", bold: true }}
-              size="240px"
-              onClick={next}
-            >
-              Ver profesionales
-            </IconTextButton>
-          </div>
-        )}
-      </div>
-      <div
-        className={`${styles.section} ${currentSection === 5 && styles.show}`}
+        className={`${styles.section} ${currentSection === 2 && styles.show}`}
       >
         {professionals.length > 0 ? (
           <Text type="title">
@@ -348,19 +209,41 @@ const FindAService = () => {
         <section className={styles.profesionals}>
           {professionals.map((p) => (
             <div className={styles.profesional}>
-              <Text bold>{p.name}</Text>
+              <div className={styles.professionalData}>
+                <Text bold>{p.name}</Text>
+                <section className={styles.professionalDetail}>
+                  <div className={styles.detailSection}>
+                    <Icon
+                      size={"1.2rem"}
+                      color="var(--primary)"
+                      type={"checked"}
+                    />
+                    <Text size={"0.8rem"} bold>
+                      Aprobado
+                    </Text>
+                  </div>
+                  <div className={styles.separator}></div>
+                  <div className={styles.detailSection}>
+                    <div className={styles.ball}></div>
+                    <Text size={"0.8rem"} bold>
+                      Disponible
+                    </Text>
+                  </div>
+                </section>
+              </div>
               <IconTextButton
                 variant="bordered"
                 size="240px"
+                iconProps={{
+                  type: "whatsapp",
+                  size: "2rem",
+                }}
                 onClick={() => handleCotize([p.phone])}
               >
-                Cotizar Precio
+                Contactar
               </IconTextButton>
             </div>
           ))}
-          <IconTextButton size="100%" onClick={handleCotizeAll}>
-            Cotizar todos
-          </IconTextButton>
         </section>
       </div>
     </div>
