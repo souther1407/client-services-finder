@@ -45,7 +45,6 @@ const DashboardAdmin = () => {
     setLoading(true);
     getAll(MAX_REQUEST, paginator.page)
       .then((response) => {
-        console.log(response);
         setRequests(response.results);
         setPaginator({
           page: paginator.page,

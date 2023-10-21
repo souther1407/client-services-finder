@@ -21,4 +21,8 @@ img {
   --light-gray: rgb(159, 159, 159);
   --light-blue-transparent: #ccd6dd;
   --blue: #4682a9;
+  --green: rgb(77, 219, 77);
+  --light-green: rgb(122, 243, 122);
+
+  --primary: var(--blue);
 }
