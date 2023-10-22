@@ -83,10 +83,10 @@
 }
 
 .section .services {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
   width: 600px;
   margin-top: 16px;
-  justify-content: space-around;
 }
 .servicesBtn {
   display: flex;
