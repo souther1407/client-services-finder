@@ -110,7 +110,6 @@ const Icon = ({ type, size, color = "inherit" }) => {
     checkMark: <AiOutlineCheckCircle {...props} />,
     money: <GiTakeMyMoney {...props} />,
     megaphone: <BsFillMegaphoneFill {...props} />,
-
     team: <AiOutlineTeam {...props} />,
     book: <BiBookOpen {...props} />,
     search: <AiOutlineSearch {...props} />,
@@ -129,36 +128,39 @@ const Icon = ({ type, size, color = "inherit" }) => {
     youtube: <AiFillYoutube {...props} />,
     linkedin: <AiFillLinkedin {...props} />,
     clip: <AiOutlinePaperClip {...props} />,
-    electricistaIcono: (
+    Eléctrico: (
       <img
         src={electricistaIcono}
         style={{ width: size, height: size, transform: "scale(2.5)" }}
       />
     ),
-    jardineriaIcono: (
+    Jardinería: (
       <img
         src={jardineriaIcono}
         style={{ width: size, height: size, transform: "scale(2.5)" }}
       />
     ),
-    limpiezaIcono: (
+    Limpieza: (
       <img
         src={limpiezaIcono}
         style={{ width: size, height: size, transform: "scale(2.5)" }}
       />
     ),
-    paseadorIcono: (
+    "Pasear Perro": (
       <img
         src={paseadorIcono}
         style={{ width: size, height: size, transform: "scale(2.5)" }}
       />
     ),
-    tutoriaIcono: (
+    Tutoría: (
       <img
         src={tutoriaIcono}
         style={{ width: size, height: size, transform: "scale(2.5)" }}
       />
     ),
+    "Diseño Interior": <GiTakeMyMoney {...props} />,
+    Automotriz: <GiTakeMyMoney {...props} />,
+    Gasfiteria: <GiTakeMyMoney {...props} />,
   };
   return <i>{icons[type]}</i>;
 };

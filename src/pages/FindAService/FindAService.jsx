@@ -12,6 +12,7 @@ import { getByLocationAndType } from "../../services/professionalsApi";
 import { LOCATION } from "../../utils/constants/locations";
 import { create } from "../../services/serviceRequest.js";
 import MoreInfo from "../../components/molecules/MoreInfo/MoreInfo";
+import { SERVICES } from "../../utils/constants/services";
 const FindAService = () => {
   const max = 6;
   const [currentSection, setCurrentSection] = useState(0);
@@ -105,61 +106,15 @@ const FindAService = () => {
         <Text type="title">¿Qué servicio necesitas?</Text>
 
         <section className={styles.services}>
-          <div
-            className={styles.servicesBtn}
-            onClick={() => handleSetServiceType("Jardinería")}
-          >
-            <Icon
-              type={"jardineriaIcono"}
-              color={"var(--light-blue)"}
-              size={"3rem"}
-            />
-            <Text>Jardinería</Text>
-          </div>
-          <div
-            className={styles.servicesBtn}
-            onClick={() => handleSetServiceType("Tutoría")}
-          >
-            <Icon
-              type={"tutoriaIcono"}
-              color={"var(--light-blue)"}
-              size={"3rem"}
-            />
-            <Text>Tutoría</Text>
-          </div>
-          <div
-            className={styles.servicesBtn}
-            onClick={() => handleSetServiceType("Eléctrico")}
-          >
-            <Icon
-              type={"electricistaIcono"}
-              color={"var(--light-blue)"}
-              size={"3rem"}
-            />
-            <Text>Eléctrico</Text>
-          </div>
-          <div
-            className={styles.servicesBtn}
-            onClick={() => handleSetServiceType("Limpieza")}
-          >
-            <Icon
-              type={"limpiezaIcono"}
-              color={"var(--light-blue)"}
-              size={"3rem"}
-            />
-            <Text>Limpieza</Text>
-          </div>
-          <div
-            className={styles.servicesBtn}
-            onClick={() => handleSetServiceType("Pasear Perro")}
-          >
-            <Icon
-              type={"paseadorIcono"}
-              color={"var(--light-blue)"}
-              size={"3rem"}
-            />
-            <Text>Pasear Perro</Text>
-          </div>
+          {SERVICES.map((s) => (
+            <div
+              className={styles.servicesBtn}
+              onClick={() => handleSetServiceType(s)}
+            >
+              <Icon type={s} color={"var(--light-blue)"} size={"3rem"} />
+              <Text>{s}</Text>
+            </div>
+          ))}
         </section>
       </div>
       <div
