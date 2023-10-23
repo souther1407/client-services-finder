@@ -4,7 +4,7 @@
   border: 1px solid transparent;
   cursor: pointer;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 16px;
   background-color: transparent;
   transition: background 0.2s ease-in;
   justify-content: space-around;
