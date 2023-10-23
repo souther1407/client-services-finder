@@ -9,6 +9,7 @@ const Select = ({
   size = "100%",
   value,
   title,
+  listPosition = "bottom",
   onChange,
   onClear = () => {},
 }) => {
@@ -23,16 +24,16 @@ const Select = ({
     e.stopPropagation();
   };
   return (
-    <div className={styles.select} style={{ width: size }}>
+    <div className={`${styles.select}`} style={{ width: size }}>
       <div className={styles.header} onClick={(e) => setShow((prev) => !prev)}>
-        <Text>{value || title}</Text>
+        <Text color={!value && "soft"}>{value || title}</Text>
         <div className={styles.btns}>
           {value && <IconButton icon={"close"} onClick={handleClear} />}
           <Icon type={"upDownArrows"} size={"1rem"} />
         </div>
       </div>
       {show && (
-        <div className={styles.elementsList}>
+        <div className={`${styles.elementsList} ${styles[listPosition]}`}>
           {elements.map((e) => (
             <Text onClick={() => handleChange(e)}>{e}</Text>
           ))}

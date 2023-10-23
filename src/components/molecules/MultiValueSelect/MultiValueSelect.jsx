@@ -2,7 +2,14 @@ import React, { useEffect, useMemo, useState } from "react";
 import styles from "./multiValueSelect.module.css";
 import Select from "../../atoms/Select/Select";
 import Text from "../../atoms/Text/Text";
-const MultiValueSelect = ({ id, elements, title, size = "100%", onChange }) => {
+const MultiValueSelect = ({
+  id,
+  elements,
+  title = "",
+  size = "100%",
+  listPosition = "bottom",
+  onChange,
+}) => {
   const [selectedElements, setSelectedElements] = useState([]);
 
   const filteredElements = useMemo(() => {
@@ -24,6 +31,8 @@ const MultiValueSelect = ({ id, elements, title, size = "100%", onChange }) => {
         id={id}
         elements={filteredElements}
         size={size}
+        title={title}
+        listPosition={listPosition}
         onChange={(id, value) => addSelectedElement(value)}
         value={selectedElements.join(",") || ""}
         onClear={clearSelectedElements}
