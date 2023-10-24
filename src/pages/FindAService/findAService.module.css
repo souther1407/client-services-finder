@@ -3,9 +3,13 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 100%;
+  top: 0;
+  left: 0;
   min-height: 100vh;
-  position: relative;
+  position: fixed;
   background-color: var(--yellow-cream);
+  overflow: hidden;
 }
 .nav {
   position: absolute;
@@ -128,4 +132,24 @@
 }
 .servicesBtn:hover {
   background-color: var(--light-blue-transparent);
+}
+
+@media screen and (max-width: 600px) {
+  .section {
+    width: 100%;
+  }
+  .section .profesional {
+    width: 100%;
+    flex-direction: column;
+  }
+  .section .profesional .professionalData {
+    margin-bottom: 16px;
+  }
+  .section .profesional .professionalData > :first-child {
+    margin-bottom: 4px;
+  }
+  .section .services {
+    width: 100%;
+    grid-template-columns: repeat(3, auto);
+  }
 }

@@ -27,4 +27,12 @@ img {
   --light-green: rgb(122, 243, 122);
 
   --primary: var(--blue);
+  --background: var(--yellow-cream);
+}
+
+@media screen and (max-width: 600px) {
+  html,
+  body {
+    font-size: 12px;
+  }
 }

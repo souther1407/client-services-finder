@@ -149,7 +149,7 @@ const FindAService = () => {
         className={`${styles.section} ${currentSection === 2 && styles.show}`}
       >
         {professionals.length > 0 ? (
-          <Text type="title">
+          <Text type="title" textAlign="center">
             ¡Encontramos a {professionals.length}{" "}
             {professionals.length > 1 ? "profesionales" : "profesional"} en tu
             area!

@@ -26,7 +26,7 @@
   position: absolute;
   z-index: 1000;
 
-  background-color: var(--yellow-cream);
+  background-color: var(--background);
 }
 .elementsList.bottom {
   top: 95%;
