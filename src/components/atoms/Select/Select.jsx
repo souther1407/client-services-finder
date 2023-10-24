@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./select.module.css";
 import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
@@ -15,6 +15,7 @@ const Select = ({
   onClear = () => {},
 }) => {
   const [show, setShow] = useState(false);
+  const btn = useRef();
   const handleChange = (value) => {
     onChange(id, value);
     setShow(false);
@@ -24,9 +25,21 @@ const Select = ({
     setShow(false);
     e.stopPropagation();
   };
+  const handleClick = () => {
+    setShow((prev) => !prev);
+    btn.current.focus();
+  };
+  const handleCloseOnBlur = (e) => {
+    setShow(false);
+  };
   return (
-    <div className={`${styles.select}`} style={{ width: size }}>
-      <div className={styles.header} onClick={(e) => setShow((prev) => !prev)}>
+    <a
+      className={`${styles.select}`}
+      style={{ width: size }}
+      href="#"
+      onBlur={handleCloseOnBlur}
+    >
+      <div className={styles.header} onClick={handleClick}>
         <div className={styles.placeholder}>
           {icon && (
             <div className={styles.icon}>
@@ -35,6 +48,12 @@ const Select = ({
           )}
           <Text color={!value && "soft"}>{value || title}</Text>
         </div>
+        {/*  <a
+          ref={btn}
+          style={{ width: "0px", height: "0px" }}
+          href="#"
+          onBlur={handleCloseOnBlur}
+        /> */}
         <div className={styles.btns}>
           {value && <IconButton icon={"close"} onClick={handleClear} />}
           <Icon type={"upDownArrows"} size={"1rem"} />
@@ -47,7 +66,7 @@ const Select = ({
           ))}
         </div>
       )}
-    </div>
+    </a>
   );
 };
 
