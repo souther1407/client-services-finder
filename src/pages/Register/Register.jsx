@@ -17,17 +17,20 @@ const Register = () => {
         {!isInLogin && (
           <Input
             id={"name"}
+            icon={"user"}
             onChange={() => {}}
             placeholder="Nombre y apellido"
           />
         )}
         <Input
+          icon={"phone"}
           id={"phone"}
           onChange={() => {}}
           placeholder="Número de teléfono"
         />
         <Input
           id={"password"}
+          icon={"shieldLock"}
           onChange={() => {}}
           placeholder="Contraseña"
           type="password"
@@ -35,6 +38,7 @@ const Register = () => {
         {!isInLogin && (
           <MultiValueSelect
             id={"professions"}
+            icon={"case"}
             elements={SERVICES}
             onChange={() => {}}
             listPosition="top"
@@ -45,6 +49,7 @@ const Register = () => {
         {!isInLogin && (
           <MultiValueSelect
             id={"locations"}
+            icon={"location"}
             listPosition="top"
             elements={LOCATION}
             onChange={() => {}}

@@ -1,3 +1,15 @@
+.container {
+  position: relative;
+}
+.icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.icon + .input {
+  padding: 20px 16px 20px 48px;
+}
 .input {
   border: 1px solid var(--light-gray);
   padding: 20px 16px;

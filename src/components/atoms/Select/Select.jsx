@@ -8,6 +8,7 @@ const Select = ({
   id,
   size = "100%",
   value,
+  icon,
   title,
   listPosition = "bottom",
   onChange,
@@ -26,7 +27,14 @@ const Select = ({
   return (
     <div className={`${styles.select}`} style={{ width: size }}>
       <div className={styles.header} onClick={(e) => setShow((prev) => !prev)}>
-        <Text color={!value && "soft"}>{value || title}</Text>
+        <div className={styles.placeholder}>
+          {icon && (
+            <div className={styles.icon}>
+              <Icon color="var(--primary)" size={"1.4rem"} type={icon} />
+            </div>
+          )}
+          <Text color={!value && "soft"}>{value || title}</Text>
+        </div>
         <div className={styles.btns}>
           {value && <IconButton icon={"close"} onClick={handleClear} />}
           <Icon type={"upDownArrows"} size={"1rem"} />
