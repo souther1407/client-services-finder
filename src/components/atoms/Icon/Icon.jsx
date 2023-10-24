@@ -3,6 +3,7 @@ import {
   AiOutlineLoading3Quarters,
   AiFillCreditCard,
   AiOutlineCheckCircle,
+  AiFillPhone,
   AiOutlineSearch,
 } from "react-icons/ai";
 import {
@@ -58,6 +59,7 @@ import {
   BsImage,
   BsFillCalculatorFill,
   BsShieldFillCheck,
+  BsFillShieldLockFill,
   BsFillTrashFill,
 } from "react-icons/bs";
 import { CgArrowsV } from "react-icons/cg";
@@ -81,6 +83,8 @@ const Icon = ({ type, size, color = "inherit" }) => {
     arrowDown: <SlArrowDown {...props} />,
     arrowUp: <SlArrowUp {...props} />,
     bulb: <AiOutlineBulb {...props} />,
+    phone: <AiFillPhone {...props} />,
+    shieldLock: <BsFillShieldLockFill {...props} />,
     userplus: <AiOutlineUserAdd {...props} />,
     sun: <BsFillSunFill {...props} />,
     moon: <BsFillMoonFill {...props} />,

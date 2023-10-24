@@ -5,6 +5,7 @@ import Text from "../../atoms/Text/Text";
 const MultiValueSelect = ({
   id,
   elements,
+  icon,
   title = "",
   size = "100%",
   listPosition = "bottom",
@@ -31,6 +32,7 @@ const MultiValueSelect = ({
         id={id}
         elements={filteredElements}
         size={size}
+        icon={icon}
         title={title}
         listPosition={listPosition}
         onChange={(id, value) => addSelectedElement(value)}
