@@ -8,6 +8,7 @@ const Select = ({
   id,
   size = "100%",
   value,
+  variant = "primary",
   icon,
   title,
   listPosition = "bottom",
@@ -34,7 +35,7 @@ const Select = ({
   };
   return (
     <a
-      className={`${styles.select}`}
+      className={`${styles[variant]} ${styles.select}`}
       style={{ width: size }}
       href="#"
       onBlur={handleCloseOnBlur}
@@ -43,10 +44,12 @@ const Select = ({
         <div className={styles.placeholder}>
           {icon && (
             <div className={styles.icon}>
-              <Icon color="var(--primary)" size={"1.4rem"} type={icon} />
+              <Icon size={"1.4rem"} type={icon} />
             </div>
           )}
-          <Text color={!value && "soft"}>{value || title}</Text>
+          <Text color={!value && "soft"} bold>
+            {value || title}
+          </Text>
         </div>
         {/*  <a
           ref={btn}
