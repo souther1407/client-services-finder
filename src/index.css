@@ -25,9 +25,11 @@ img {
   --blue: #4682a9;
   --green: rgb(77, 219, 77);
   --light-green: rgb(122, 243, 122);
-
-  --primary: var(--blue);
-  --background: var(--yellow-cream);
+  --dark-green: rgb(42, 180, 147);
+  --dark-green-darker: rgb(37, 155, 127);
+  --primary: var(--dark-green);
+  --primary-darker: var(--dark-green-darker);
+  --background: var(--white);
 }
 
 @media screen and (max-width: 600px) {

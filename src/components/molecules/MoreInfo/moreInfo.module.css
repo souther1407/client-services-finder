@@ -10,7 +10,7 @@
   top: 50%;
   border: 1px solid var(--light-gray);
   border-radius: 4px;
-  background-color: var(--yellow-cream);
+  background-color: var(--background);
   transform: translateY(-50%);
   width: 300px;
   max-height: 200px;
