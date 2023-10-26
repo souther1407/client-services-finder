@@ -6,6 +6,7 @@ import styles from "./register.module.css";
 import { LOCATION } from "../../utils/constants/locations";
 import { SERVICES } from "../../utils/constants/services";
 import IconTextButton from "../../components/molecules/IconTextButton/IconTextButton";
+import { isEmpty, isPhoneIncorrect } from "../../utils/validators/validators";
 const Register = () => {
   const [isInLogin, setIsInLogin] = useState(false);
   return (
@@ -20,6 +21,8 @@ const Register = () => {
             icon={"user"}
             variant="secondary"
             onChange={() => {}}
+            validators={[isEmpty]}
+            onError={(id, error) => console.log(id, error)}
             placeholder="Nombre y apellido"
           />
         )}
@@ -27,6 +30,8 @@ const Register = () => {
           icon={"phone"}
           id={"phone"}
           onChange={() => {}}
+          validators={[isEmpty]}
+          onError={(id, error) => console.log(id, error)}
           variant="secondary"
           placeholder="Número de teléfono"
         />
@@ -35,6 +40,8 @@ const Register = () => {
           variant="secondary"
           icon={"shieldLock"}
           onChange={() => {}}
+          validators={[isEmpty]}
+          onError={(id, error) => console.log(id, error)}
           placeholder="Contraseña"
           type="password"
         />
@@ -65,11 +72,12 @@ const Register = () => {
           <IconTextButton
             textProps={{ type: "subtitle" }}
             onClick={() => setIsInLogin(false)}
-            colorVariant="secondary"
+            colorVariant={isInLogin ? "secondary" : "primary"}
           >
             Registrarse
           </IconTextButton>
           <IconTextButton
+            colorVariant={!isInLogin ? "secondary" : "primary"}
             textProps={{ type: "subtitle" }}
             onClick={() => setIsInLogin(true)}
           >

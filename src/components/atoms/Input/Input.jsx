@@ -4,14 +4,26 @@ import Icon from "../Icon/Icon";
 const Input = ({
   id,
   onChange,
+  onError,
   variant = "primary",
   icon,
   size = "100%",
+  validators = [],
   ...otherProps
 }) => {
   const handleChange = (e) => {
+    handleError(e.target.value);
     onChange(id, e.target.value);
   };
+
+  const handleError = (value) => {
+    let error = "";
+    for (const validator of validators) {
+      error = validator(value);
+    }
+    onError(id, error);
+  };
+
   return (
     <div className={`${styles[variant]} ${styles.container}`}>
       {icon && (
