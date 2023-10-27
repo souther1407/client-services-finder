@@ -4,8 +4,6 @@ import Icon from "../../components/atoms/Icon/Icon";
 import styles from "./findAService.module.css";
 import IconButton from "../../components/molecules/IconButton/IconButton";
 import IconTextButton from "../../components/molecules/IconTextButton/IconTextButton";
-import Input from "../../components/atoms/Input/Input";
-import Textarea from "../../components/atoms/Textarea/Textarea";
 import Select from "../../components/atoms/Select/Select";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
 import { getByLocationAndType } from "../../services/professionalsApi";
@@ -131,6 +129,7 @@ const FindAService = () => {
             id={"location"}
             value={input.location}
             onChange={handleChangeInput}
+            onError={() => {}}
             title={"Ingresa tu distrito"}
           />
         </div>
