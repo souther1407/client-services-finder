@@ -7,6 +7,7 @@ const MultiValueSelect = ({
   elements,
   variant = "primary",
   icon,
+  onError,
   title = "",
   size = "100%",
   listPosition = "bottom",
@@ -36,6 +37,7 @@ const MultiValueSelect = ({
         variant={variant}
         icon={icon}
         title={title}
+        onError={onError}
         listPosition={listPosition}
         onChange={(id, value) => addSelectedElement(value)}
         value={selectedElements.join(",") || ""}

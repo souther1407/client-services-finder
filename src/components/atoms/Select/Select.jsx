@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./select.module.css";
 import Icon from "../Icon/Icon";
 import Text from "../Text/Text";
@@ -8,6 +8,7 @@ const Select = ({
   id,
   size = "100%",
   value,
+  onError,
   variant = "primary",
   icon,
   title,
@@ -33,6 +34,9 @@ const Select = ({
   const handleCloseOnBlur = (e) => {
     setShow(false);
   };
+  useEffect(() => {
+    onError(id, !value ? "ingrese un valor por favor" : "");
+  }, [value]);
   return (
     <a
       className={`${styles[variant]} ${styles.select}`}

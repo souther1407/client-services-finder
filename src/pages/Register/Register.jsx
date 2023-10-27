@@ -24,8 +24,8 @@ const Register = () => {
     name: "Ingrese un valor por favor",
     phone: "Ingrese un valor por favor",
     password: "Ingrese un valor por favor",
-    professions: "",
-    locations: "",
+    professions: "Ingrese un valor por favor",
+    locations: "Ingrese un valor por favor",
   });
 
   const clearInput = () => {
@@ -130,6 +130,7 @@ const Register = () => {
             variant="secondary"
             onChange={handleChange}
             listPosition="top"
+            onError={handleErrors}
             title={"Profesión(es)"}
           />
         )}
@@ -141,6 +142,7 @@ const Register = () => {
             listPosition="top"
             variant="secondary"
             elements={LOCATION}
+            onError={handleErrors}
             onChange={handleChange}
             title={"Distrito(s)"}
           />
