@@ -10,6 +10,7 @@ export const create = async (data) => {
   if (response.status >= 400) throw new Error(`Error: ${body}`);
   return body;
 };
+
 export const getByLocationAndType = async (location, type) => {
   const response = await fetch(
     `${URL}/professionals/locationAndService?location=${location}&type=${type}`
