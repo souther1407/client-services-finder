@@ -23,6 +23,10 @@
   font-weight: bold;
 }
 
+.primary {
+  color: var(--primary);
+}
+
 .soft {
   color: gray;
 }

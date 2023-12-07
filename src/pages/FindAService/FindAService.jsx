@@ -8,7 +8,6 @@ import Select from "../../components/atoms/Select/Select";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
 import { getByLocationAndType } from "../../services/professionalsApi";
 import { LOCATION } from "../../utils/constants/locations";
-import { create } from "../../services/serviceRequest.js";
 import MoreInfo from "../../components/molecules/MoreInfo/MoreInfo";
 import { SERVICES } from "../../utils/constants/services";
 const FindAService = () => {
@@ -145,7 +144,7 @@ const FindAService = () => {
       </div>
 
       <div
-        className={`${styles.section} ${currentSection === 2 && styles.show}`}
+        className={`${styles.section} ${styles.results} ${currentSection === 2 && styles.show}`}
       >
         {professionals.length > 0 ? (
           <Text type="title" textAlign="center">
@@ -163,20 +162,13 @@ const FindAService = () => {
           {professionals.map((p) => (
             <div className={styles.profesional}>
               <div className={styles.professionalData}>
-                <Text bold>{p.name}</Text>
+                <Text color="primary" bold>{p.name}</Text>
                 <section className={styles.professionalDetail}>
-                  <MoreInfo
-                    text={
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elit nisi, iaculis eget quam nec, malesuada finibus lectus. Ut et urna blandit, auctor leo nec, eleifend nisl. Ut consequat odio ut fermentum mollis. Sed commodo, arcu sit amet sodales condimentum, ex lectus porttitor mauris, sit amet porttitor massa nibh at erat. Vestibulum malesuada dapibus porta. Vivamus tristique velit urna, in accumsan urna volutpat in. Etiam eget sem id ex rutrum molestie. Curabitur in purus diam. Integer felis erat, lacinia ac eros ac, egestas porttitor arcu. Phasellus rutrum arcu at neque vulputate cursus."
-                    }
-                    img={
-                      "https://upload.wikimedia.org/wikipedia/commons/e/e4/Cuesta_del_obispo_01.jpg"
-                    }
-                  >
+                
                     <div className={styles.detailSection}>
                       <Icon
                         size={"1.2rem"}
-                        color="var(--primary)"
+                        color="var(--black)"
                         type={"checked"}
                       />
 
@@ -184,13 +176,12 @@ const FindAService = () => {
                         Aprobado
                       </Text>
                     </div>
-                  </MoreInfo>
+                 
 
                   <div className={styles.separator}></div>
                   <div className={styles.detailSection}>
-                    <div className={styles.ball}></div>
                     <Text size={"0.8rem"} bold>
-                      Disponible
+                      {p.types[0]}
                     </Text>
                   </div>
                 </section>

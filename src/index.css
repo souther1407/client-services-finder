@@ -16,20 +16,23 @@ img {
 }
 :root {
   --white: white;
+  --white-transparent: #ffffff3b;
   --yellow-cream: #f6f4eb;
-  --black: #1e2226;
+  --black: #282827;
   --black-transparent: #1e22265e;
   --light-blue: #749bc2;
-  --light-gray: rgb(159, 159, 159);
+  --light-gray: rgba(159, 159, 159, 0.26);
   --light-blue-transparent: #ccd6dd;
   --blue: #4682a9;
   --green: rgb(77, 219, 77);
   --light-green: rgb(122, 243, 122);
-  --dark-green: rgb(42, 180, 147);
+  --dark-green: #26a69a;
   --dark-green-darker: rgb(37, 155, 127);
   --primary: var(--dark-green);
   --primary-darker: var(--dark-green-darker);
-  --background: var(--white);
+  --background: #dff2e7;
+  --background-container: var(--white-transparent);
+  --container-border: var(--light-gray);
 }
 
 @media screen and (max-width: 600px) {

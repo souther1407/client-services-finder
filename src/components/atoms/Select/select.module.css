@@ -64,7 +64,7 @@
 }
 .primary .elementsList {
   border: 1px solid var(--light-gray);
-  background-color: var(--background);
+  background-color: #f2f2f2;
 }
 .primary .placeholder .icon {
   color: var(--primary);
@@ -74,7 +74,7 @@
 
 .secondary .header {
   border: 1px solid transparent;
-  background-color: gainsboro;
+  background-color: var(--white);
 }
 
 .secondary .icon {
