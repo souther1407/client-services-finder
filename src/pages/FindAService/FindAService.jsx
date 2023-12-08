@@ -7,8 +7,8 @@ import IconTextButton from "../../components/molecules/IconTextButton/IconTextBu
 import Select from "../../components/atoms/Select/Select";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
 import { getByLocationAndType } from "../../services/professionalsApi";
+import Modal from "../../components/molecules/Modal/Modal";
 import { LOCATION } from "../../utils/constants/locations";
-import MoreInfo from "../../components/molecules/MoreInfo/MoreInfo";
 import { SERVICES } from "../../utils/constants/services";
 const FindAService = () => {
   const max = 6;
@@ -18,7 +18,11 @@ const FindAService = () => {
     location: "",
   });
   const [professionals, setProfessionals] = useState([]);
+  const [profesionalDetail, setProfesionalDetail] = useState({
+    name: "",
+  });
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const next = () => {
     if (currentSection === max - 1) return;
@@ -80,10 +84,15 @@ const FindAService = () => {
       /*  setLoading(false); */
     }
   };
-  const handleCotizeAll = async () => {
+
+  const handleShowDetailProfesional = (profesional) => {
+    setProfesionalDetail(profesional);
+    setShowModal(true);
+  };
+  /* const handleCotizeAll = async () => {
     const phoneNumbers = professionals.map((p) => p.phone);
     handleCotize(phoneNumbers);
-  };
+  }; */
   return (
     <div className={styles.findAService}>
       {loading && <LoadingScreen />}
@@ -144,7 +153,9 @@ const FindAService = () => {
       </div>
 
       <div
-        className={`${styles.section} ${styles.results} ${currentSection === 2 && styles.show}`}
+        className={`${styles.section} ${styles.results} ${
+          currentSection === 2 && styles.show
+        }`}
       >
         {professionals.length > 0 ? (
           <Text type="title" textAlign="center">
@@ -161,22 +172,25 @@ const FindAService = () => {
         <section className={styles.profesionals}>
           {professionals.map((p) => (
             <div className={styles.profesional}>
-              <div className={styles.professionalData}>
-                <Text color="primary" bold>{p.name}</Text>
+              <div
+                className={styles.professionalData}
+                onClick={() => handleShowDetailProfesional(p)}
+              >
+                <Text color="primary" bold>
+                  {p.name}
+                </Text>
                 <section className={styles.professionalDetail}>
-                
-                    <div className={styles.detailSection}>
-                      <Icon
-                        size={"1.2rem"}
-                        color="var(--black)"
-                        type={"checked"}
-                      />
+                  <div className={styles.detailSection}>
+                    <Icon
+                      size={"1.2rem"}
+                      color="var(--black)"
+                      type={"checked"}
+                    />
 
-                      <Text size={"0.8rem"} bold>
-                        Aprobado
-                      </Text>
-                    </div>
-                 
+                    <Text size={"0.8rem"} bold>
+                      Aprobado
+                    </Text>
+                  </div>
 
                   <div className={styles.separator}></div>
                   <div className={styles.detailSection}>
@@ -201,6 +215,42 @@ const FindAService = () => {
           ))}
         </section>
       </div>
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)} size="50%">
+        <div className={styles.modalContent}>
+          <Text type="subtitle" bold>
+            {profesionalDetail.name}
+          </Text>
+          <div className={styles.detailSection}>
+            <Icon size={"1.2rem"} color="var(--black)" type={"checked"} />
+
+            <Text size={"0.8rem"} bold>
+              Aprobado
+            </Text>
+          </div>
+          <div>
+            <Text type="subtitle" bold>
+              Experiencia
+            </Text>
+            <Text>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
+              molestias animi veritatis odit magnam corrupti expedita, harum,
+              praesentium voluptas laboriosam, velit nobis repellat accusamus
+              tenetur. Iste quo voluptates tenetur quaerat.
+            </Text>
+          </div>
+          <div>
+            <Text type="subtitle" bold>
+              Descripción
+            </Text>
+            <Text>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
+              molestias animi veritatis odit magnam corrupti expedita, harum,
+              praesentium voluptas laboriosam, velit nobis repellat accusamus
+              tenetur. Iste quo voluptates tenetur quaerat.
+            </Text>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };
