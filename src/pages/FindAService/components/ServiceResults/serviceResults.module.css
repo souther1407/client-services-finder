@@ -1,0 +1,66 @@
+.profesionals {
+  margin-top: 16px;
+}
+
+.profesional {
+  border: 1px solid var(--light-gray);
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  width: 600px;
+  box-shadow: 2px 2px 1px var(--light-gray);
+  background-color: var(--background-container);
+}
+
+.profesionals > *:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.professionalData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.professionalDetail {
+  display: flex;
+}
+.separator {
+  width: 1px;
+  height: 100%;
+  background-color: gray;
+  margin: 0 16px;
+}
+
+.detailSection {
+  display: flex;
+  align-items: center;
+}
+.detailSection > :first-child {
+  margin-right: 8px;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+}
+.modalContent > * {
+  margin-bottom: 16px;
+}
+
+@media screen and (max-width: 600px) {
+  .profesionals {
+    margin-top: 64px;
+  }
+  .profesional {
+    width: 100%;
+    flex-direction: column;
+  }
+  .profesional .professionalData {
+    margin-bottom: 16px;
+  }
+  .profesional .professionalData > :first-child {
+    margin-bottom: 4px;
+  }
+}

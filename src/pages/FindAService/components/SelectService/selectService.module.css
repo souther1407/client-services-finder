@@ -1,0 +1,26 @@
+.services {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  width: 600px;
+  margin-top: 16px;
+}
+
+.servicesBtn {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: center;
+  padding: 16px;
+  margin-right: 4px;
+  border-radius: 8px;
+  transition: background 0.2s ease-in;
+}
+.servicesBtn:hover {
+  background-color: var(--light-blue-transparent);
+}
+@media screen and (max-width: 600px) {
+  .services {
+    width: 100%;
+    grid-template-columns: repeat(3, auto);
+  }
+}
