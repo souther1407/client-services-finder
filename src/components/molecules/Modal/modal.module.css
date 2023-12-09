@@ -10,6 +10,7 @@
   overflow: hidden;
   background-color: var(--black-transparent);
   z-index: 10000;
+  padding: 8px;
 }
 
 .modal.show {
@@ -19,6 +20,7 @@
 .modalContent {
   position: relative;
   padding: 16px;
+  width: 50%;
   border-radius: 8px;
   background-color: var(--white);
 }
@@ -26,4 +28,10 @@
   position: absolute;
   right: 1%;
   top: 5%;
+}
+
+@media screen and (max-width: 600px) {
+  .modalContent {
+    width: 100%;
+  }
 }

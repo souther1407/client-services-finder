@@ -88,7 +88,7 @@ const ServiceResults = ({ professionals }) => {
         ))}
       </section>
 
-      <Modal isOpen={showModal} onClose={() => setShowModal(false)} size="50%">
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <div className={styles.modalContent}>
           <Text type="subtitle" bold>
             {profesionalDetail.name}
