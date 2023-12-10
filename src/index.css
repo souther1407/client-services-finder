@@ -34,7 +34,9 @@ img {
   --background-container: var(--white-transparent);
   --container-border: var(--light-gray);
 }
-
+ul {
+  list-style-position: inside;
+}
 @media screen and (max-width: 600px) {
   html,
   body {

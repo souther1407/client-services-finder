@@ -4,14 +4,17 @@
   outline: none;
   border: 1px solid transparent;
   cursor: pointer;
-  padding: 16px 24px;
-  border-radius: 16px;
+  padding: 8px 24px;
+  border-radius: 8px;
   background-color: transparent;
   transition: background 0.2s ease-in;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
-
+.primary.iconTextButton i,
+.secondary.iconTextButton i {
+  margin-left: 8px;
+}
 /* Primary */
 .primary.iconTextButton.full {
   background-color: var(--primary);

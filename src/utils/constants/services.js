@@ -1,5 +1,5 @@
 export const SERVICES = [
-  "Tutoría",
+  "Educación",
   "Jardinería",
   "Eléctrico",
   "Limpieza",

@@ -16,7 +16,8 @@
   transition: background 0.2s ease-in;
 }
 .servicesBtn:hover {
-  background-color: var(--light-blue-transparent);
+  background-color: var(--black-transparent);
+  color: var(--white);
 }
 @media screen and (max-width: 600px) {
   .services {

@@ -19,14 +19,14 @@
 
 .modalContent {
   position: relative;
-  padding: 16px;
+  padding: 32px;
   width: 50%;
   border-radius: 8px;
-  background-color: var(--white);
+  background-color: var(--background);
 }
 .closeButton {
   position: absolute;
-  right: 1%;
+  right: 2%;
   top: 5%;
 }
 

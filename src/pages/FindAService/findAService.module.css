@@ -4,10 +4,7 @@
   align-items: center;
   width: 100%;
   max-width: 100%;
-  top: 0;
-  left: 0;
   min-height: 100vh;
-  position: fixed;
   background-color: var(--background);
   overflow: auto;
 }
@@ -22,7 +19,7 @@
 .section {
   display: none;
   flex-direction: column;
-  width: 600px;
+  min-width: 600px;
   background-color: var(--background-container);
   border-radius: 16px;
   padding: 16px;
@@ -50,9 +47,9 @@
 @media screen and (max-width: 600px) {
   .section.results {
     margin-top: 64px;
-    overflow: auto;
   }
   .section {
     width: 100%;
+    min-width: auto;
   }
 }

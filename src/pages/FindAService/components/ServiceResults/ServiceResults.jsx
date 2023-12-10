@@ -4,7 +4,8 @@ import IconTextButton from "../../../../components/molecules/IconTextButton/Icon
 import Modal from "../../../../components/molecules/Modal/Modal";
 import Icon from "../../../../components/atoms/Icon/Icon";
 import styles from "./serviceResults.module.css";
-const ServiceResults = ({ professionals }) => {
+
+const ServiceResults = ({ professionals, location }) => {
   const [showModal, setShowModal] = useState(false);
 
   const [profesionalDetail, setProfesionalDetail] = useState({
@@ -33,12 +34,12 @@ const ServiceResults = ({ professionals }) => {
     }
   };
   return (
-    <div>
+    <>
       {professionals.length > 0 ? (
         <Text type="title" textAlign="center">
           ¡Encontramos a {professionals.length}{" "}
-          {professionals.length > 1 ? "profesionales" : "profesional"} en tu
-          area!
+          {professionals.length > 1 ? "profesionales" : "profesional"} en{" "}
+          {location}
         </Text>
       ) : (
         <Text type="title">
@@ -53,23 +54,19 @@ const ServiceResults = ({ professionals }) => {
               className={styles.professionalData}
               onClick={() => handleShowDetailProfesional(p)}
             >
-              <Text color="primary" bold>
+              <Text color="primary" size={"1.25rem"} bold>
                 {p.name}
               </Text>
               <section className={styles.professionalDetail}>
                 <div className={styles.detailSection}>
                   <Icon size={"1.2rem"} color="var(--black)" type={"checked"} />
 
-                  <Text size={"0.8rem"} bold>
-                    Aprobado
-                  </Text>
+                  <Text size={"1rem"}>Aprobado</Text>
                 </div>
 
                 <div className={styles.separator}></div>
                 <div className={styles.detailSection}>
-                  <Text size={"0.8rem"} bold>
-                    {p.types[0]}
-                  </Text>
+                  <Text size={"1rem"}>{p.types[0]}</Text>
                 </div>
               </section>
             </div>
@@ -79,6 +76,10 @@ const ServiceResults = ({ professionals }) => {
               iconProps={{
                 type: "whatsapp",
                 size: "2rem",
+              }}
+              textProps={{
+                bold: true,
+                size: "1.25rem",
               }}
               onClick={() => handleCotize([p.phone])}
             >
@@ -90,29 +91,28 @@ const ServiceResults = ({ professionals }) => {
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <div className={styles.modalContent}>
-          <Text type="subtitle" bold>
+          <Text type="subtitle" size={"2rem"} bold>
             {profesionalDetail.name}
           </Text>
           <div className={styles.detailSection}>
             <Icon size={"1.2rem"} color="var(--black)" type={"checked"} />
 
-            <Text size={"0.8rem"} bold>
-              Aprobado
-            </Text>
+            <Text size={"0.8rem"}>Aprobado</Text>
           </div>
           <div>
-            <Text type="subtitle" bold>
+            <Text type="subtitle" size={"1.25rem"} bold>
               Experiencia
             </Text>
-            <Text>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-              molestias animi veritatis odit magnam corrupti expedita, harum,
-              praesentium voluptas laboriosam, velit nobis repellat accusamus
-              tenetur. Iste quo voluptates tenetur quaerat.
-            </Text>
+            <ul className={styles.listSkills}>
+              <li>Lorem</li>
+              <li>Lorem</li>
+              <li>Lorem</li>
+              <li>Lorem</li>
+              <li>Lorem</li>
+            </ul>
           </div>
-          <div>
-            <Text type="subtitle" bold>
+          <div className={styles.descripcion}>
+            <Text type="subtitle" size={"1.25rem"} bold>
               Descripción
             </Text>
             <Text>
@@ -122,9 +122,26 @@ const ServiceResults = ({ professionals }) => {
               tenetur. Iste quo voluptates tenetur quaerat.
             </Text>
           </div>
+          <div className={styles.btnContact}>
+            <IconTextButton
+              variant="bordered"
+              size="300px"
+              iconProps={{
+                type: "whatsapp",
+                size: "2rem",
+              }}
+              textProps={{
+                bold: true,
+                size: "1.25rem",
+              }}
+              onClick={() => handleCotize([profesionalDetail.phone])}
+            >
+              Contactar
+            </IconTextButton>
+          </div>
         </div>
       </Modal>
-    </div>
+    </>
   );
 };
 

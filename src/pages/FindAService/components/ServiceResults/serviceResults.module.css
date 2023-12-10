@@ -4,11 +4,11 @@
 
 .profesional {
   border: 1px solid var(--light-gray);
-  padding: 16px;
+  padding: 24px;
   display: flex;
   justify-content: space-between;
   border-radius: 8px;
-  width: 600px;
+  width: 720px;
   box-shadow: 2px 2px 1px var(--light-gray);
   background-color: var(--background-container);
 }
@@ -38,7 +38,7 @@
   align-items: center;
 }
 .detailSection > :first-child {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 
 .modalContent {
@@ -46,9 +46,24 @@
   flex-direction: column;
 }
 .modalContent > * {
+  margin-bottom: 8px;
+}
+.listSkills {
+  margin-left: 8px;
+  margin-top: 16px;
+}
+.descripcion {
+  margin-top: 32px;
+}
+.descripcion > :first-child {
   margin-bottom: 16px;
 }
-
+.btnContact {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 @media screen and (max-width: 600px) {
   .profesionals {
     margin-top: 64px;

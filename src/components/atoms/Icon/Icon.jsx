@@ -65,11 +65,14 @@ import {
 import { CgArrowsV } from "react-icons/cg";
 import { FiClock } from "react-icons/fi";
 import styles from "./icon.module.css";
-import electricistaIcono from "../../../assets/electricistaIcono.svg";
-import jardineriaIcono from "../../../assets/jardineriaIcono.svg";
-import limpiezaIcono from "../../../assets/limpiezaIcono.svg";
-import paseadorIcono from "../../../assets/paseadorIcono.svg";
-import tutoriaIcono from "../../../assets/tutoriaIcono.svg";
+import electricistaIcono from "../../../assets/Electrico.svg";
+import jardineriaIcono from "../../../assets/Jardinería.svg";
+import limpiezaIcono from "../../../assets/Limpieza.svg";
+import paseadorIcono from "../../../assets/Pasear Perros.svg";
+import tutoriaIcono from "../../../assets/Educación.svg";
+import diseñoInteriorIcono from "../../../assets/Diseño Interior.svg";
+import automotrizIcono from "../../../assets/Automotriz.svg";
+import gasfiteriaIcono from "../../../assets/Gasfitería.svg";
 
 const Icon = ({ type, size, color = "inherit" }) => {
   const props = {
@@ -156,15 +159,30 @@ const Icon = ({ type, size, color = "inherit" }) => {
         style={{ width: size, height: size, transform: "scale(2.5)" }}
       />
     ),
-    Tutoría: (
+    Educación: (
       <img
         src={tutoriaIcono}
         style={{ width: size, height: size, transform: "scale(2.5)" }}
       />
     ),
-    "Diseño Interior": <GiTakeMyMoney {...props} />,
-    Automotriz: <GiTakeMyMoney {...props} />,
-    Gasfiteria: <GiTakeMyMoney {...props} />,
+    "Diseño Interior": (
+      <img
+        src={diseñoInteriorIcono}
+        style={{ width: size, height: size, transform: "scale(2.5)" }}
+      />
+    ),
+    Automotriz: (
+      <img
+        src={automotrizIcono}
+        style={{ width: size, height: size, transform: "scale(2.5)" }}
+      />
+    ),
+    Gasfiteria: (
+      <img
+        src={gasfiteriaIcono}
+        style={{ width: size, height: size, transform: "scale(2.5)" }}
+      />
+    ),
   };
   return <i>{icons[type]}</i>;
 };

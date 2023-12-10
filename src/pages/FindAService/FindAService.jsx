@@ -95,7 +95,10 @@ const FindAService = () => {
           currentSection === 2 && styles.show
         }`}
       >
-        <ServiceResults professionals={professionals} />
+        <ServiceResults
+          professionals={professionals}
+          location={input.location}
+        />
       </div>
     </div>
   );
