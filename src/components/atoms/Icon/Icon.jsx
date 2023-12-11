@@ -73,6 +73,7 @@ import tutoriaIcono from "../../../assets/Educación.svg";
 import diseñoInteriorIcono from "../../../assets/Diseño Interior.svg";
 import automotrizIcono from "../../../assets/Automotriz.svg";
 import gasfiteriaIcono from "../../../assets/Gasfitería.svg";
+import logoIcono from "../../../assets/Logo.svg";
 
 const Icon = ({ type, size, color = "inherit" }) => {
   const props = {
@@ -183,6 +184,7 @@ const Icon = ({ type, size, color = "inherit" }) => {
         style={{ width: size, height: size, transform: "scale(2.5)" }}
       />
     ),
+    Logo: <img src={logoIcono} style={{ width: size, height: size }} />,
   };
   return <i>{icons[type]}</i>;
 };

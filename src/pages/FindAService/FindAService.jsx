@@ -86,8 +86,8 @@ const FindAService = ({ showDetail }) => {
       <nav className={styles.nav}>
         {currentSection !== 0 && (
           <IconButton
-            icon={"home"}
-            size={"2.5rem"}
+            icon={"Logo"}
+            size={"150px"}
             color={"var(--primary)"}
             onClick={resetForm}
           />
