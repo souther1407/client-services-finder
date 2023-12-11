@@ -5,7 +5,7 @@ import Modal from "../../../../components/molecules/Modal/Modal";
 import Icon from "../../../../components/atoms/Icon/Icon";
 import styles from "./serviceResults.module.css";
 
-const ServiceResults = ({ professionals, location }) => {
+const ServiceResults = ({ professionals, location, remarkFirst }) => {
   const [showModal, setShowModal] = useState(false);
 
   const [profesionalDetail, setProfesionalDetail] = useState({
@@ -18,8 +18,6 @@ const ServiceResults = ({ professionals, location }) => {
   };
   const handleCotize = async (professionalPhoneNumbers) => {
     try {
-      /* setLoading(true); */
-      /* await create({ ...input, professionalPhoneNumbers }); */
       const link = document.createElement("a");
       link.setAttribute(
         "href",
@@ -30,7 +28,6 @@ const ServiceResults = ({ professionals, location }) => {
     } catch (error) {
       alert(error.message);
     } finally {
-      /*  setLoading(false); */
     }
   };
   return (
@@ -48,7 +45,7 @@ const ServiceResults = ({ professionals, location }) => {
       )}
 
       <section className={styles.profesionals}>
-        {professionals.map((p) => (
+        {professionals.map((p, index) => (
           <div className={styles.profesional}>
             <div
               className={styles.professionalData}
@@ -71,7 +68,7 @@ const ServiceResults = ({ professionals, location }) => {
               </section>
             </div>
             <IconTextButton
-              variant="bordered"
+              variant={remarkFirst && index === 0 ? "full" : "bordered"}
               size="240px"
               iconProps={{
                 type: "whatsapp",

@@ -6,10 +6,11 @@ import { getByLocationAndType } from "../../services/professionalsApi";
 import SelectService from "./components/SelectService/SelectService";
 import SelectLocation from "./components/SelectLocation/SelectLocation";
 import ServiceResults from "./components/ServiceResults/ServiceResults";
+import { useNavigate } from "react-router-dom";
 
-const FindAService = () => {
+const FindAService = ({ showDetail }) => {
   const max = 6;
-  const [currentSection, setCurrentSection] = useState(0);
+  const [currentSection, setCurrentSection] = useState(showDetail ? 2 : 0);
   const [input, setInput] = useState({
     type: "",
     location: "",
@@ -26,6 +27,7 @@ const FindAService = () => {
     setInput((prev) => ({ ...prev, type }));
     next();
   };
+  const navigate = useNavigate();
   const handleChangeInput = (id, value) =>
     setInput((prev) => ({ ...prev, [id]: value }));
 
@@ -40,23 +42,43 @@ const FindAService = () => {
       serviceType: "",
     });
     setCurrentSection(0);
+    if (showDetail) {
+      navigate("/");
+    }
   };
 
   const handleFindProfessionals = async () => {
     try {
       setLoading(true);
-      const professionals = await getByLocationAndType(
-        input.location,
-        input.type
+      let professionals = await getByLocationAndType(
+        showDetail ? showDetail.location : input.location,
+        showDetail ? showDetail.type : input.type
       );
+
+      if (showDetail && professionals.length > 0) {
+        const profesional = professionals.find(
+          (p) => p.name === showDetail.name
+        );
+        professionals = professionals.filter(
+          (p) => p.name !== profesional.name
+        );
+        professionals = [profesional, ...professionals];
+      }
+      console.log(professionals);
       setProfessionals(professionals);
-      next();
+      if (!showDetail) next();
     } catch (error) {
       alert(error.message);
     } finally {
       setLoading(false);
     }
   };
+
+  useState(() => {
+    if (showDetail) {
+      handleFindProfessionals();
+    }
+  }, []);
 
   return (
     <div className={styles.findAService}>
@@ -95,10 +117,13 @@ const FindAService = () => {
           currentSection === 2 && styles.show
         }`}
       >
-        <ServiceResults
-          professionals={professionals}
-          location={input.location}
-        />
+        {!loading && (
+          <ServiceResults
+            professionals={professionals}
+            location={input.location}
+            remarkFirst={!!showDetail}
+          />
+        )}
       </div>
     </div>
   );
