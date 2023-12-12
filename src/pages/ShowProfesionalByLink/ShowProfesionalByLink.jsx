@@ -1,17 +1,18 @@
 import React from "react";
 import FindAService from "../FindAService/FindAService";
-import { useParams } from "react-router-dom";
-
+import { Navigate, useParams } from "react-router-dom";
+import { FIND_SERVICE } from "../../utils/constants/routes";
 const ShowProfesionalByLink = () => {
   const { link } = useParams();
+
   try {
     const json = atob(link);
 
     const detail = JSON.parse(json);
-    console.log(detail);
+
     return <FindAService showDetail={detail} />;
   } catch (error) {
-    return <FindAService />;
+    return <Navigate to={FIND_SERVICE} />;
   }
 };
 
