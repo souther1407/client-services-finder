@@ -58,6 +58,9 @@
 .descripcion > :first-child {
   margin-bottom: 16px;
 }
+.btnContanctList {
+  width: 230px;
+}
 .btnContact {
   margin-top: 16px;
   display: flex;
@@ -77,5 +80,8 @@
   }
   .profesional .professionalData > :first-child {
     margin-bottom: 4px;
+  }
+  .btnContanctList {
+    width: 100%;
   }
 }

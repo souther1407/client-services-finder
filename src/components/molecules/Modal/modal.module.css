@@ -23,6 +23,8 @@
   width: 50%;
   border-radius: 8px;
   background-color: var(--background);
+  height: 530px;
+  overflow: auto;
 }
 .closeButton {
   position: absolute;
@@ -33,5 +35,9 @@
 @media screen and (max-width: 600px) {
   .modalContent {
     width: 100%;
+  }
+  .closeButton {
+    top: 7%;
+    right: 6%;
   }
 }

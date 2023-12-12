@@ -67,21 +67,23 @@ const ServiceResults = ({ professionals, location, remarkFirst }) => {
                 </div>
               </section>
             </div>
-            <IconTextButton
-              variant={remarkFirst && index === 0 ? "full" : "bordered"}
-              size="240px"
-              iconProps={{
-                type: "whatsapp",
-                size: "2rem",
-              }}
-              textProps={{
-                bold: true,
-                size: "1.25rem",
-              }}
-              onClick={() => handleCotize([p.phone])}
-            >
-              Contactar
-            </IconTextButton>
+            <div className={styles.btnContanctList}>
+              <IconTextButton
+                variant={remarkFirst && index === 0 ? "full" : "bordered"}
+                size="100%"
+                iconProps={{
+                  type: "whatsapp",
+                  size: "2rem",
+                }}
+                textProps={{
+                  bold: true,
+                  size: "1.25rem",
+                }}
+                onClick={() => handleCotize([p.phone])}
+              >
+                Contactar
+              </IconTextButton>
+            </div>
           </div>
         ))}
       </section>
