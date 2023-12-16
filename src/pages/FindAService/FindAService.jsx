@@ -84,14 +84,12 @@ const FindAService = ({ showDetail }) => {
     <div className={styles.findAService}>
       {loading && <LoadingScreen />}
       <nav className={styles.nav}>
-        {currentSection !== 0 && (
-          <IconButton
-            icon={"Logo"}
-            size={"150px"}
-            color={"var(--primary)"}
-            onClick={resetForm}
-          />
-        )}
+        <IconButton
+          icon={"Logo"}
+          size={"150px"}
+          color={"var(--primary)"}
+          onClick={resetForm}
+        />
       </nav>
       <div
         className={`${styles.section} ${currentSection === 0 && styles.show} ${
