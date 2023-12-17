@@ -57,10 +57,23 @@
   cursor: pointer;
 }
 
+.primary .hover,
+.secondary .hover {
+  padding-left: 8px;
+  transition: all 0.1s ease-in;
+}
+
+.primary .hover:hover,
+.secondary .hover:hover {
+  background-color: var(--light-gray);
+  color: var(--white);
+}
+
 /* Primary */
 
 .primary .header {
   border: 1px solid var(--light-gray);
+  color: var(--gray);
 }
 .primary .elementsList {
   border: 1px solid var(--light-gray);
@@ -74,7 +87,7 @@
 
 .secondary .header {
   border: 1px solid transparent;
-  background-color: var(--white);
+  background-color: var(--gray);
 }
 
 .secondary .icon {

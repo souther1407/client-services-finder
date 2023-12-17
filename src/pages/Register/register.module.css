@@ -15,20 +15,51 @@
 }
 
 .form {
-  width: 400px;
+  width: 800px;
 }
-.form > *:not(:last-child) {
+.fields {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.fields > :first-child {
+  margin-right: 16px;
+  flex-basis: 50%;
+}
+.fields > :last-child {
+  flex-basis: 50%;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.form > .fields > .column > *:not(:last-child) {
   margin-bottom: 8px;
 }
 
 .btns {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 16px;
+}
+.btns > :first-child {
+  margin-right: 8px;
 }
 
 @media screen and (max-width: 600px) {
   .form {
     width: 100%;
     padding: 16px;
+  }
+  .fields {
+    flex-direction: column;
+  }
+  .fields > :first-child {
+    margin-right: 0;
+    flex-basis: 100%;
+  }
+  .fields > :last-child {
+    margin-top: 8px;
+    flex-basis: 100%;
   }
 }

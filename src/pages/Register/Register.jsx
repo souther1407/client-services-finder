@@ -3,13 +3,15 @@ import MultiValueSelect from "../../components/molecules/MultiValueSelect/MultiV
 import Text from "../../components/atoms/Text/Text";
 import Input from "../../components/atoms/Input/Input";
 import styles from "./register.module.css";
+import Textarea from "../../components/atoms/Textarea/Textarea";
 import { LOCATION } from "../../utils/constants/locations";
 import { SERVICES } from "../../utils/constants/services";
 import IconTextButton from "../../components/molecules/IconTextButton/IconTextButton";
-import { isEmpty, isPhoneIncorrect } from "../../utils/validators/validators";
+import { isEmpty } from "../../utils/validators/validators";
 import { create } from "../../services/professionalsApi";
 import { login } from "../../services/auth";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
+import ListInput from "../../components/molecules/ListInput/ListInput";
 const Register = () => {
   const [isInLogin, setIsInLogin] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -19,6 +21,8 @@ const Register = () => {
     password: "",
     professions: [],
     locations: [],
+    description: "",
+    skills: [],
   });
   const [errors, setErrors] = useState({
     name: "Ingrese un valor por favor",
@@ -33,8 +37,10 @@ const Register = () => {
       name: "",
       phone: "",
       password: "",
+      description: "",
       professions: [],
       locations: [],
+      skills: [],
     });
   };
 
@@ -91,62 +97,81 @@ const Register = () => {
       <div className={styles.title}>
         <Text type="title">{isInLogin ? "Iniciar sesión" : "Registrarse"}</Text>
       </div>
-      <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-        {!isInLogin && (
-          <Input
-            id={"name"}
-            icon={"user"}
-            variant="secondary"
-            onChange={handleChange}
-            validators={[isEmpty]}
-            onError={handleErrors}
-            placeholder="Nombre y apellido"
-          />
-        )}
-        <Input
-          icon={"phone"}
-          id={"phone"}
-          onChange={handleChange}
-          validators={[isEmpty]}
-          onError={handleErrors}
-          variant="secondary"
-          placeholder="Número de teléfono"
-        />
-        <Input
-          id={"password"}
-          variant="secondary"
-          icon={"shieldLock"}
-          onChange={handleChange}
-          validators={[isEmpty]}
-          onError={handleErrors}
-          placeholder="Contraseña"
-          type="password"
-        />
-        {!isInLogin && (
-          <MultiValueSelect
-            id={"professions"}
-            icon={"case"}
-            elements={SERVICES}
-            variant="secondary"
-            onChange={handleChange}
-            listPosition="top"
-            onError={handleErrors}
-            title={"Profesión(es)"}
-          />
-        )}
+      <div className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <div className={styles.fields}>
+          <div className={styles.column}>
+            {!isInLogin && (
+              <Input
+                id={"name"}
+                icon={"user"}
+                variant="secondary"
+                onChange={handleChange}
+                validators={[isEmpty]}
+                onError={handleErrors}
+                placeholder="Nombre y apellido"
+              />
+            )}
+            <Input
+              icon={"phone"}
+              id={"phone"}
+              onChange={handleChange}
+              validators={[isEmpty]}
+              onError={handleErrors}
+              variant="secondary"
+              placeholder="Número de teléfono"
+            />
+            <Input
+              id={"password"}
+              variant="secondary"
+              icon={"shieldLock"}
+              onChange={handleChange}
+              validators={[isEmpty]}
+              onError={handleErrors}
+              placeholder="Contraseña"
+              type="password"
+            />
+            {!isInLogin && (
+              <MultiValueSelect
+                id={"professions"}
+                icon={"case"}
+                elements={SERVICES}
+                variant="secondary"
+                onChange={handleChange}
+                listPosition="top"
+                onError={handleErrors}
+                title={"Profesión(es)"}
+              />
+            )}
 
-        {!isInLogin && (
-          <MultiValueSelect
-            id={"locations"}
-            icon={"location"}
-            listPosition="top"
-            variant="secondary"
-            elements={LOCATION}
-            onError={handleErrors}
-            onChange={handleChange}
-            title={"Distrito(s)"}
-          />
-        )}
+            {!isInLogin && (
+              <MultiValueSelect
+                id={"locations"}
+                icon={"location"}
+                listPosition="top"
+                variant="secondary"
+                elements={LOCATION}
+                onError={handleErrors}
+                onChange={handleChange}
+                title={"Distrito(s)"}
+              />
+            )}
+          </div>
+          {!isInLogin && (
+            <div className={styles.column}>
+              <Textarea
+                id={"description"}
+                placeholder={"Descripción"}
+                onChange={handleChange}
+              />
+              <ListInput
+                id="skills"
+                values={input.skills}
+                onEnterValue={handleChange}
+              />
+            </div>
+          )}
+        </div>
+
         <section className={styles.btns}>
           <IconTextButton
             textProps={{ type: "subtitle" }}
@@ -163,7 +188,7 @@ const Register = () => {
             Iniciar sesión
           </IconTextButton>
         </section>
-      </form>
+      </div>
     </div>
   );
 };

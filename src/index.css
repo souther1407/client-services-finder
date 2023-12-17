@@ -14,6 +14,9 @@ img {
   width: 100%;
   height: 100%;
 }
+textarea {
+  font-family: inherit;
+}
 :root {
   --white: white;
   --white-transparent: #ffffff3b;
@@ -22,6 +25,7 @@ img {
   --black-transparent: #1e22265e;
   --light-blue: #749bc2;
   --light-gray: rgba(159, 159, 159, 0.26);
+  --gray: gainsboro;
   --light-blue-transparent: #ccd6dd;
   --blue: #4682a9;
   --green: rgb(77, 219, 77);

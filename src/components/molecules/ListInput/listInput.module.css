@@ -1,0 +1,19 @@
+.listInput {
+  background-color: var(--gray);
+  padding: 16px;
+  height: 124px;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.input {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+}
+.input::placeholder {
+  color: gray;
+}
+.input:focus {
+  outline: none;
+}

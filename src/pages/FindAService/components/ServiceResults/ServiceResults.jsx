@@ -48,7 +48,7 @@ const ServiceResults = ({ professionals, location, remarkFirst }) => {
               className={styles.professionalData}
               onClick={() => handleShowDetailProfesional(p)}
             >
-              <Text color="primary" size={"1.25rem"} bold>
+              <Text size={"1.25rem"} bold>
                 {p.name}
               </Text>
               <section className={styles.professionalDetail}>

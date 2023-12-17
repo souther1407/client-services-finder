@@ -22,6 +22,15 @@
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  flex-grow: 1;
+}
+
+.professionalData > :first-child {
+  transition: all 0.2s ease-in;
+}
+.professionalData:hover > :first-child {
+  color: var(--primary);
+  text-decoration: underline;
 }
 .professionalDetail {
   display: flex;
