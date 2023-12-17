@@ -19,10 +19,7 @@ const ServiceResults = ({ professionals, location, remarkFirst }) => {
   const handleCotize = async (professionalPhoneNumbers) => {
     try {
       const link = document.createElement("a");
-      link.setAttribute(
-        "href",
-        `whatsapp://send?phone=${professionalPhoneNumbers}`
-      );
+      link.setAttribute("href", `https://wa.me/${professionalPhoneNumbers}`);
       link.setAttribute("target", "_blank");
       link.click();
     } catch (error) {
