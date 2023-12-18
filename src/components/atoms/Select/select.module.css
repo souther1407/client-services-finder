@@ -73,7 +73,6 @@
 
 .primary .header {
   border: 1px solid var(--light-gray);
-  color: var(--gray);
 }
 .primary .elementsList {
   border: 1px solid var(--light-gray);

@@ -12,6 +12,8 @@ import { create } from "../../services/professionalsApi";
 import { login } from "../../services/auth";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
 import ListInput from "../../components/molecules/ListInput/ListInput";
+import { useNavigate } from "react-router-dom";
+import { PROFILE } from "../../utils/constants/routes";
 const Register = () => {
   const [isInLogin, setIsInLogin] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -24,6 +26,7 @@ const Register = () => {
     description: "",
     skills: [],
   });
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({
     name: "Ingrese un valor por favor",
     phone: "Ingrese un valor por favor",
@@ -62,12 +65,16 @@ const Register = () => {
       return setIsInLogin(true);
     }
     const errorsList = getErrors();
-    console.log(errors);
     if (errorsList.length > 0) return alert(errorsList[errorsList.length - 1]);
     try {
       setLoading(true);
-      await login({ phone: input.phone, password: input.password });
+      const { token } = await login({
+        phone: input.phone,
+        password: input.password,
+      });
+      localStorage.setItem("token", token);
       alert("logeado!");
+      navigate(PROFILE);
     } catch (error) {
       alert(error.message);
     } finally {
