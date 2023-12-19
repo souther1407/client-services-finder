@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./listInput.module.css";
 
-const ListInput = ({ id, values, onEnterValue }) => {
+const ListInput = ({ id, values, onEnterValue, onDelete }) => {
   const handleEnterListValue = (e) => {
     if (e.key === "Enter" && e.target.value.trim() !== "") {
       const value = e.target.value;
@@ -23,6 +23,7 @@ const ListInput = ({ id, values, onEnterValue }) => {
               value={v}
               disabled
             />
+            <button onClick={() => onDelete(v)}>X</button>
           </li>
         ))}
         <li>

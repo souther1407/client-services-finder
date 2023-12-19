@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./profile.module.css";
 import Text from "../../components/atoms/Text/Text";
 import { useNavigate } from "react-router-dom";
@@ -7,14 +7,40 @@ import Input from "../../components/atoms/Input/Input";
 import Textarea from "../../components/atoms/Textarea/Textarea";
 import IconTextButton from "../../components/molecules/IconTextButton/IconTextButton";
 import ListInput from "../../components/molecules/ListInput/ListInput";
+import { getProfesionalDetail } from "../../services/professionalsApi";
 const Profile = () => {
   const navigate = useNavigate();
+  const [details, setDetails] = useState({
+    name: "",
+    phone: "",
+    skills: [],
+    description: "",
+  });
+
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate(FIND_SERVICE);
+      return navigate(FIND_SERVICE);
+    } else {
+      getProfesionalDetail()
+        .then((data) =>
+          setDetails({
+            ...data,
+          })
+        )
+        .catch((err) => alert(err));
     }
   }, []);
 
+  const handleChange = (id, value) => {
+    setDetails((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleDeleteSkill = async (skill) => {
+    setDetails((prev) => ({
+      ...prev,
+      skills: prev.skills.filter((s) => s != skill),
+    }));
+  };
   return (
     <div className={styles.profile}>
       <Text type="title">Perfil</Text>
@@ -23,25 +49,33 @@ const Profile = () => {
           <Input
             icon={"user"}
             id={"name"}
-            onChange={() => {}}
+            onChange={handleChange}
             onError={() => {}}
             variant="secondary"
+            value={details.name}
             placeholder="Nombre y apellido"
           />
           <Input
             icon={"phone"}
             id={"phone"}
-            onChange={() => {}}
+            onChange={handleChange}
             onError={() => {}}
             variant="secondary"
+            value={details.phone}
             placeholder="Número de teléfono"
           />
-          <ListInput id={"skills"} onEnterValue={() => {}} values={[]} />
+          <ListInput
+            id={"skills"}
+            onEnterValue={handleChange}
+            values={details.skills}
+            onDelete={handleDeleteSkill}
+          />
         </div>
         <div className={styles.column}>
           <Textarea
             id={"description"}
-            onChange={() => {}}
+            onChange={handleChange}
+            value={details.description}
             placeholder="Descripción"
           />
         </div>

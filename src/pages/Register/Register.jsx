@@ -97,6 +97,12 @@ const Register = () => {
       setLoading(false);
     }
   };
+  const handleDeleteSkill = async (skill) => {
+    setInput((prev) => ({
+      ...prev,
+      skills: prev.skills.filter((s) => s != skill),
+    }));
+  };
 
   return (
     <div className={styles.register}>
@@ -174,6 +180,7 @@ const Register = () => {
                 id="skills"
                 values={input.skills}
                 onEnterValue={handleChange}
+                onDelete={handleDeleteSkill}
               />
             </div>
           )}

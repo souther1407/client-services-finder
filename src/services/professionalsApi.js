@@ -7,7 +7,7 @@ export const create = async (data) => {
     body: JSON.stringify(data),
   });
   const body = await response.json();
-  if (response.status >= 400) throw new Error(`Error: ${body}`);
+  if (response.status >= 400) throw new Error(`Error: ${body.error}`);
   return body;
 };
 
@@ -16,6 +16,20 @@ export const getByLocationAndType = async (location, type) => {
     `${URL}/professionals/locationAndService?location=${location}&type=${type}`
   );
   const body = await response.json();
-  if (response.status >= 400) throw new Error(`Error: ${body}`);
+  if (response.status >= 400) throw new Error(`Error: ${body.error}`);
+  return body;
+};
+
+export const getProfesionalDetail = async () => {
+  const response = await fetch(`${URL}/professionals/details`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  const body = await response.json();
+  console.log(body);
+  if (response.status >= 400) throw new Error(`Error: ${body.error}`);
+
   return body;
 };
