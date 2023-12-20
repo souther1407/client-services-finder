@@ -28,7 +28,22 @@ export const getProfesionalDetail = async () => {
     },
   });
   const body = await response.json();
-  console.log(body);
+  if (response.status >= 400) throw new Error(`Error: ${body.error}`);
+
+  return body;
+};
+
+export const updateProfessional = async (data) => {
+  const response = await fetch(`${URL}/professionals/`, {
+    method: "PUT",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(data),
+  });
+  const body = await response.json();
+
   if (response.status >= 400) throw new Error(`Error: ${body.error}`);
 
   return body;

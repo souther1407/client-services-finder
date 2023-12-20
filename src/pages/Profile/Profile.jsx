@@ -7,7 +7,11 @@ import Input from "../../components/atoms/Input/Input";
 import Textarea from "../../components/atoms/Textarea/Textarea";
 import IconTextButton from "../../components/molecules/IconTextButton/IconTextButton";
 import ListInput from "../../components/molecules/ListInput/ListInput";
-import { getProfesionalDetail } from "../../services/professionalsApi";
+import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
+import {
+  getProfesionalDetail,
+  updateProfessional,
+} from "../../services/professionalsApi";
 const Profile = () => {
   const navigate = useNavigate();
   const [details, setDetails] = useState({
@@ -16,6 +20,7 @@ const Profile = () => {
     skills: [],
     description: "",
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -27,7 +32,8 @@ const Profile = () => {
             ...data,
           })
         )
-        .catch((err) => alert(err));
+        .catch((err) => alert(err))
+        .finally(() => setLoading(false));
     }
   }, []);
 
@@ -41,8 +47,21 @@ const Profile = () => {
       skills: prev.skills.filter((s) => s != skill),
     }));
   };
+
+  const handleUpdateUser = async () => {
+    try {
+      setLoading(true);
+      const updated = await updateProfessional(details);
+      alert("Cambios guardados!");
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className={styles.profile}>
+      {loading && <LoadingScreen />}
       <Text type="title">Perfil</Text>
       <div className={styles.settings}>
         <div className={styles.column}>
@@ -81,7 +100,9 @@ const Profile = () => {
         </div>
       </div>
       <div className={styles.btns}>
-        <IconTextButton>Guardar cambios</IconTextButton>
+        <IconTextButton onClick={handleUpdateUser}>
+          Guardar cambios
+        </IconTextButton>
         <IconTextButton>Cerrar sesion</IconTextButton>
       </div>
     </div>
