@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import FindAService from "./pages/FindAService/FindAService";
-import DashboardAdmin from "./pages/dashboardAdmin/DashboardAdmin";
+import DashboardProfesionales from "./pages/DashboardProfesioanles/DashboardProfesionales";
 import Register from "./pages/Register/Register";
 import ShowProfesionalByLink from "./pages/ShowProfesionalByLink/ShowProfesionalByLink";
 import Profile from "./pages/Profile/Profile";
@@ -23,7 +23,7 @@ function App() {
       />
       <Route
         path={`/${import.meta.env.VITE_ADMIN_URL}`}
-        element={<DashboardAdmin />}
+        element={<DashboardProfesionales />}
       />
     </Routes>
   );
