@@ -48,3 +48,32 @@ export const updateProfessional = async (data) => {
 
   return body;
 };
+
+export const getAllProfessionals = async (cant, page) => {
+  const response = await fetch(
+    `${URL}/professionals/all?cant=${cant}&page=${page}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }
+  );
+  const body = await response.json();
+  if (response.status >= 400) throw new Error(`Error: ${body.error}`);
+
+  return body;
+};
+
+export const deleteOneProfessional = async (id) => {
+  const response = await fetch(`${URL}/professionals/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  const body = await response.json();
+  if (response.status >= 400) throw new Error(`Error: ${body.error}`);
+
+  return body;
+};
