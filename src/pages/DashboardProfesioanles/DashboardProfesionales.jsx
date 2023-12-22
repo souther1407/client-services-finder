@@ -63,6 +63,7 @@ const DashboardProfesionales = () => {
     if (pagination.page === calcTotalPages()) return;
     setPaginator((prev) => ({ ...prev, page: prev.page + 1 }));
   };
+  console.log(professionals);
   return (
     <div className={styles.dashboard}>
       {loading && <LoadingScreen />}
@@ -72,6 +73,7 @@ const DashboardProfesionales = () => {
             <thead>
               <tr>
                 <th>Nombre</th>
+                <th>Servicio</th>
                 <th>Borrar</th>
               </tr>
             </thead>
@@ -79,6 +81,7 @@ const DashboardProfesionales = () => {
               {professionals.map((p) => (
                 <tr key={p.id}>
                   <td>{p.name}</td>
+                  <td>{p?.types?.join(",")}</td>
                   <td>
                     <button onClick={() => handleDelete(p.id)}>Borrar</button>
                   </td>
