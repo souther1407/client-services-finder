@@ -15,6 +15,9 @@
 .subtitle {
   font-size: calc(2rem - 12px);
 }
+.standard {
+  color: var(--black);
+}
 .inherit {
   color: inherit;
 }

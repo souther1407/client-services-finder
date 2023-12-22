@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   border-radius: 8px;
-  width: 720px;
+  width: 800px;
   box-shadow: 2px 2px 1px var(--light-gray);
   background-color: var(--background-container);
 }
@@ -28,10 +28,11 @@
 .professionalData > :first-child {
   transition: all 0.2s ease-in;
 }
-.professionalData:hover > :first-child {
+.profesional:hover > :first-child > :first-child {
   color: var(--primary);
   text-decoration: underline;
 }
+
 .professionalDetail {
   display: flex;
 }
@@ -53,6 +54,7 @@
 .modalContent {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .modalContent > * {
   margin-bottom: 8px;
@@ -68,7 +70,7 @@
   margin-bottom: 16px;
 }
 .btnContanctList {
-  width: 230px;
+  width: 250px;
 }
 .btnContact {
   margin-top: 16px;

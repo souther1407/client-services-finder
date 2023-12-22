@@ -68,11 +68,13 @@ const Select = ({
       </div>
       {show && (
         <div className={`${styles.elementsList} ${styles[listPosition]}`}>
-          {elements.map((e) => (
-            <div className={styles.hover}>
-              <Text onClick={() => handleChange(e)}>{e}</Text>
-            </div>
-          ))}
+          <div className={styles.subElementList}>
+            {elements.map((e) => (
+              <div className={styles.hover}>
+                <Text onClick={() => handleChange(e)}>{e}</Text>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </a>

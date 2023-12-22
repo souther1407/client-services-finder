@@ -33,7 +33,6 @@
 .secondary .elementsList {
   display: flex;
   flex-direction: column;
-  padding: 16px;
   width: 100%;
   position: absolute;
   z-index: 1000;
@@ -76,7 +75,11 @@
 }
 .primary .elementsList {
   border: 1px solid var(--light-gray);
-  background-color: #f2f2f2;
+  background-color: var(--background);
+}
+.primary .subElementList {
+  background-color: var(--background-container);
+  padding: 16px;
 }
 .primary .placeholder .icon {
   color: var(--primary);
@@ -96,4 +99,5 @@
 .secondary .elementsList {
   border: 1px solid var(--light-gray);
   background-color: var(--white);
+  padding: 16px;
 }

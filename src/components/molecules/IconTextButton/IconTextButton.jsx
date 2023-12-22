@@ -19,7 +19,9 @@ const IconTextButton = ({
       onClick={onClick}
       {...otherProps}
     >
-      <Text {...textProps}>{children}</Text>
+      <Text {...textProps} color="inherit">
+        {children}
+      </Text>
       {iconProps?.type && <Icon {...iconProps} />}
     </button>
   );

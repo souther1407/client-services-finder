@@ -4,7 +4,7 @@ import styles from "./text.module.css";
 const Text = ({
   type = "text",
   bold,
-  color = "inherit",
+  color = "standard",
   children,
   size,
   textAlign = "start",

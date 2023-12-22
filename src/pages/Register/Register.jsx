@@ -11,6 +11,7 @@ import { isEmpty } from "../../utils/validators/validators";
 import { create } from "../../services/professionalsApi";
 import { login } from "../../services/auth";
 import LoadingScreen from "../../components/molecules/LoadingScreen/LoadingScreen";
+import Checkbox from "../../components/atoms/Checkbox/Checkbox";
 import ListInput from "../../components/molecules/ListInput/ListInput";
 import { useNavigate } from "react-router-dom";
 import { PROFILE } from "../../utils/constants/routes";
@@ -21,17 +22,18 @@ const Register = () => {
     name: "",
     phone: "",
     password: "",
-    professions: [],
+    types: [],
     locations: [],
     description: "",
     skills: [],
+    aproved: false,
   });
   const navigate = useNavigate();
   const [errors, setErrors] = useState({
     name: "Ingrese un valor por favor",
     phone: "Ingrese un valor por favor",
     password: "Ingrese un valor por favor",
-    professions: "Ingrese un valor por favor",
+    types: "Ingrese un valor por favor",
     locations: "Ingrese un valor por favor",
   });
 
@@ -145,7 +147,7 @@ const Register = () => {
             />
             {!isInLogin && (
               <MultiValueSelect
-                id={"professions"}
+                id={"types"}
                 icon={"case"}
                 elements={SERVICES}
                 variant="secondary"
@@ -167,6 +169,11 @@ const Register = () => {
                 onChange={handleChange}
                 title={"Distrito(s)"}
               />
+            )}
+            {!isInLogin && (
+              <div>
+                Aprobado: <Checkbox id={"aproved"} onChange={handleChange} />
+              </div>
             )}
           </div>
           {!isInLogin && (

@@ -3,6 +3,7 @@ import Text from "../../../../components/atoms/Text/Text";
 import IconTextButton from "../../../../components/molecules/IconTextButton/IconTextButton";
 import Modal from "../../../../components/molecules/Modal/Modal";
 import Icon from "../../../../components/atoms/Icon/Icon";
+import SkillsCollapsable from "./components/SkillsCollapsable/SkillsCollapsable";
 import styles from "./serviceResults.module.css";
 
 const ServiceResults = ({ professionals, location, remarkFirst }) => {
@@ -52,15 +53,23 @@ const ServiceResults = ({ professionals, location, remarkFirst }) => {
                 {p.name}
               </Text>
               <section className={styles.professionalDetail}>
-                <div className={styles.detailSection}>
-                  <Icon size={"1.2rem"} color="var(--black)" type={"checked"} />
+                {p?.aproved && (
+                  <>
+                    <div className={styles.detailSection}>
+                      <Icon
+                        size={"1.2rem"}
+                        color="var(--black)"
+                        type={"checked"}
+                      />
 
-                  <Text size={"1rem"}>Aprobado</Text>
-                </div>
+                      <Text size={"1rem"}>Empresa Aprobada</Text>
+                    </div>
 
-                <div className={styles.separator}></div>
+                    <div className={styles.separator}></div>
+                  </>
+                )}
                 <div className={styles.detailSection}>
-                  <Text size={"1rem"}>{p.types[0]}</Text>
+                  <SkillsCollapsable skills={p?.skills ?? []} />
                 </div>
               </section>
             </div>
@@ -90,34 +99,33 @@ const ServiceResults = ({ professionals, location, remarkFirst }) => {
           <Text type="subtitle" size={"2rem"} bold>
             {profesionalDetail.name}
           </Text>
-          <div className={styles.detailSection}>
-            <Icon size={"1.2rem"} color="var(--black)" type={"checked"} />
+          {profesionalDetail?.aproved && (
+            <div className={styles.detailSection}>
+              <Icon size={"1.2rem"} color="var(--black)" type={"checked"} />
 
-            <Text size={"0.8rem"}>Aprobado</Text>
-          </div>
-          <div>
-            <Text type="subtitle" size={"1.25rem"} bold>
-              Experiencia
-            </Text>
-            <ul className={styles.listSkills}>
-              <li>Lorem</li>
-              <li>Lorem</li>
-              <li>Lorem</li>
-              <li>Lorem</li>
-              <li>Lorem</li>
-            </ul>
-          </div>
-          <div className={styles.descripcion}>
-            <Text type="subtitle" size={"1.25rem"} bold>
-              Descripción
-            </Text>
-            <Text>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-              molestias animi veritatis odit magnam corrupti expedita, harum,
-              praesentium voluptas laboriosam, velit nobis repellat accusamus
-              tenetur. Iste quo voluptates tenetur quaerat.
-            </Text>
-          </div>
+              <Text size={"0.8rem"}>Aprobado</Text>
+            </div>
+          )}
+          {profesionalDetail?.skills?.length > 0 && (
+            <div>
+              <Text type="subtitle" size={"1.25rem"} bold>
+                Experiencia
+              </Text>
+              <ul className={styles.listSkills}>
+                {profesionalDetail?.skills.map((s) => (
+                  <li>{s}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {profesionalDetail.description && (
+            <div className={styles.descripcion}>
+              <Text type="subtitle" size={"1.25rem"} bold>
+                Descripción
+              </Text>
+              <Text>{profesionalDetail.description}</Text>
+            </div>
+          )}
           <div className={styles.btnContact}>
             <IconTextButton
               variant="bordered"
