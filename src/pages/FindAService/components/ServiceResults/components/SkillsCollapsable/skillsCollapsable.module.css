@@ -1,4 +1,9 @@
+.skills {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
 .seeMore {
-  text-decoration: underline;
-  color: var(--primary);
+  font-weight: bold;
 }
